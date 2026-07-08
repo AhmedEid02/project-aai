@@ -1,0 +1,33 @@
+import {
+  MapPin,
+  Thermometer,
+  Wind,
+  Cloud,
+  TriangleAlert,
+  CheckCircle2,
+  ShieldAlert,
+  Users,
+  Building2,
+  ClipboardCheck,
+  Clock3,
+  BarChart3,
+  Activity,
+  BrainCircuit,
+} from "lucide-react";
+
+export const Icons = {
+  MapPin,
+  Thermometer,
+  Wind,
+  Cloud,
+  TriangleAlert,
+  CheckCircle2,
+  ShieldAlert,
+  Users,
+  Building2,
+  ClipboardCheck,
+  Clock3,
+  BarChart3,
+  Activity,
+  BrainCircuit,
+};
