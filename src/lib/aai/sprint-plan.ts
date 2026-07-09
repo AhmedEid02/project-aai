@@ -10,10 +10,12 @@ export type SprintMilestone = {
 export const AAI_SPRINT_START_DATE = "2026-07-09T00:00:00+03:00";
 
 /**
- * Default: 28-day hackathon sprint.
- * If the official hackathon deadline is different, only change this value.
+ * AAI is managed as a 28-day build sprint.
+ * The submission deadline can remain separate if the hackathon gives an extra final day.
  */
-export const AAI_SPRINT_DEADLINE = "2026-08-06T23:59:59+03:00";
+export const AAI_SPRINT_TOTAL_DAYS = 28;
+
+export const AAI_SUBMISSION_DEADLINE = "2026-08-06T23:59:59+03:00";
 
 export const aaiSprintMilestones: SprintMilestone[] = [
   {
