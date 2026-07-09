@@ -44,9 +44,9 @@ function getKeyMessage(input: AidaBriefInput) {
 function getActions(input: AidaBriefInput) {
   if (input.mode === "somali") {
     return [
-      "La socodsii bulshada fariimo kooban oo ku saabsan biyo, daaq, beerasho, iyo dhaqdhaqaaqa xoolaha.",
+      "La socodsii bulshada fariimo kooban oo ku saabsan biyaha, daaqa, beerashada, iyo dhaqashada xoolaha.",
       "Hubi xaaladda ceelasha, berkadaha, daaqa, iyo qiimaha suuqa.",
-      "Dhallinyarada, odayaasha, iyo idaacadaha deegaanka ha gudbiyaan fariimaha digniinta.",
+      "Dhallinyarada, odayaasha, iyo idaacadaha deegaanku ha gudbiyaan fariimaha digniinta.",
     ];
   }
 
@@ -78,7 +78,7 @@ export function generateAidaBrief(input: AidaBriefInput): AidaBrief {
     communicationChannels: input.fusion.lastMileChannels,
     closingNote:
       input.mode === "somali"
-        ? "Farriintani waa in lagu xaqiijiyaa xogta deegaanka, lana gaarsiiyo dadka si cad, degdeg ah, oo la fahmi karo."
+        ? "Farriintani waa in lagu xaqiijiyaa xogta deegaanka, lana gaadhsiiyo dadka si cad, oo degdeg ah, oo la fahmi karo."
         : "This brief should be validated with field observations and used to support early, coordinated, no-regrets action.",
   };
 }
