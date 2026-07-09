@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { fuseClimateSignals } from "@/lib/arie/climate-fusion";
 import { assessArieRisk } from "@/lib/arie/risk-engine";
 import { arieScenarios } from "@/lib/arie/scenarios";
 
@@ -19,10 +20,19 @@ export async function GET(request: Request) {
     );
   }
 
-  const assessment = assessArieRisk(scenario);
+  const fusion = fuseClimateSignals(scenario);
+  const assessment = assessArieRisk(fusion.fusedInput);
 
   return NextResponse.json({
     generatedAt: new Date().toISOString(),
+    scenario: {
+      id: scenario.scenarioId,
+      locationName: scenario.locationName,
+      region: scenario.region,
+      countryContext: scenario.countryContext,
+      livelihoodZone: scenario.livelihoodZone,
+    },
+    fusion: fusion.fusionSummary,
     assessment,
   });
 }
