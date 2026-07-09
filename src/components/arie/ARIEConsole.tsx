@@ -14,6 +14,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+import { AIDecisionPartner } from "@/components/ai/AIDecisionPartner";
+
 import { AdaptiveRiskIndex } from "./AdaptiveRiskIndex";
 import { ClimateContext } from "./ClimateContext";
 import { DecisionConfidence } from "./DecisionConfidence";
@@ -56,9 +58,9 @@ const milestones = [
   { label: "Foundation", status: "Complete" },
   { label: "ARIE Intelligence Console", status: "Complete" },
   { label: "Adaptive Risk Intelligence", status: "Complete" },
-  { label: "Multi-source Climate Fusion", status: "Active" },
-  { label: "AIDA Decision Copilot", status: "Next" },
-  { label: "Operational Products", status: "Planned" },
+  { label: "Multi-source Climate Fusion", status: "Complete" },
+  { label: "AIDA Decision Copilot", status: "Active" },
+  { label: "Operational Products", status: "Next" },
   { label: "Demo & Deployment", status: "Planned" },
 ];
 
@@ -299,6 +301,8 @@ export default function ARIEConsole() {
       </div>
 
       <FusionTracePanel fusion={data.fusion} />
+
+      <AIDecisionPartner scenarioId={selectedScenario} />
 
       <div className="grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
         <RiskDrivers drivers={assessment.drivers} />
