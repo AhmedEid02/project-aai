@@ -10,8 +10,9 @@ import {
 } from "lucide-react";
 
 import {
-  AAI_SPRINT_DEADLINE,
   AAI_SPRINT_START_DATE,
+  AAI_SPRINT_TOTAL_DAYS,
+  AAI_SUBMISSION_DEADLINE,
   aaiSprintMilestones,
 } from "@/lib/aai/sprint-plan";
 
@@ -44,29 +45,33 @@ export function SprintClock() {
 
   const metrics = useMemo(() => {
     const start = new Date(AAI_SPRINT_START_DATE);
-    const deadline = new Date(AAI_SPRINT_DEADLINE);
+    const submissionDeadline = new Date(AAI_SUBMISSION_DEADLINE);
     const current = now ?? start;
 
-    const totalDays = Math.max(1, Math.ceil((deadline.getTime() - start.getTime()) / DAY_MS));
-    const elapsedRaw = Math.floor((current.getTime() - start.getTime()) / DAY_MS) + 1;
-    const currentDay = clamp(elapsedRaw, 1, totalDays);
-    const daysRemaining = Math.max(
+    const elapsedRaw =
+      Math.floor((current.getTime() - start.getTime()) / DAY_MS) + 1;
+
+    const currentDay = clamp(elapsedRaw, 1, AAI_SPRINT_TOTAL_DAYS);
+
+    const buildDaysLeft = Math.max(
       0,
-      Math.ceil((deadline.getTime() - current.getTime()) / DAY_MS),
+      AAI_SPRINT_TOTAL_DAYS - currentDay + 1,
     );
 
-    const progress = clamp(Math.round((currentDay / totalDays) * 100), 0, 100);
+    const progress = clamp(
+      Math.round((currentDay / AAI_SPRINT_TOTAL_DAYS) * 100),
+      0,
+      100,
+    );
 
     const activeMilestone =
       aaiSprintMilestones.find((milestone) => milestone.status === "Active") ??
       aaiSprintMilestones[0];
 
     return {
-      start,
-      deadline,
-      totalDays,
+      submissionDeadline,
       currentDay,
-      daysRemaining,
+      buildDaysLeft,
       progress,
       activeMilestone,
     };
@@ -82,31 +87,33 @@ export function SprintClock() {
           </div>
 
           <h2 className="mt-3 text-2xl font-bold text-white">
-            Day {metrics.currentDay} of {metrics.totalDays}
+            Day {metrics.currentDay} of {AAI_SPRINT_TOTAL_DAYS}
           </h2>
 
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
-            We are now managing AAI as a time-boxed operational build. Every day
-            must move the platform closer to a deployable early warning–to–early
-            action intelligence system.
+            AAI is now managed as a 28-day operational build. Every day must move
+            the platform closer to a deployable early warning–to–early action
+            intelligence system.
           </p>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[560px]">
           <ClockMetric
             icon={<Hourglass className="h-4 w-4 text-amber-300" />}
-            label="Days remaining"
-            value={`${metrics.daysRemaining}`}
+            label="Build days left"
+            value={`${metrics.buildDaysLeft}`}
           />
+
           <ClockMetric
             icon={<Flame className="h-4 w-4 text-red-300" />}
             label="Current focus"
             value={metrics.activeMilestone.label}
           />
+
           <ClockMetric
             icon={<TimerReset className="h-4 w-4 text-emerald-300" />}
-            label="Demo deadline"
-            value={formatDate(metrics.deadline)}
+            label="Submission deadline"
+            value={formatDate(metrics.submissionDeadline)}
           />
         </div>
       </div>
@@ -143,7 +150,9 @@ export function SprintClock() {
               {milestone.label}
             </div>
 
-            <div className="mt-1 text-xs text-slate-500">{milestone.dayRange}</div>
+            <div className="mt-1 text-xs text-slate-500">
+              {milestone.dayRange}
+            </div>
 
             <div
               className={`mt-3 inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${

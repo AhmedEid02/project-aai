@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import {
   Activity,
   AlertTriangle,
@@ -22,8 +23,8 @@ import { FusionTracePanel } from "./FusionTracePanel";
 import { OperationalDecision } from "./OperationalDecision";
 import { RiskDrivers } from "./RiskDrivers";
 
-import type { ArieAssessment } from "@/lib/arie/types";
 import type { ClimateFusionResult } from "@/lib/arie/climate-fusion";
+import type { ArieAssessment } from "@/lib/arie/types";
 
 type ArieApiResponse = {
   generatedAt: string;
@@ -259,18 +260,21 @@ export default function ARIEConsole() {
             value={assessment.locationName}
             tone="cyan"
           />
+
           <StatusTile
             icon={<AlertTriangle className="h-5 w-5" />}
             label="Risk Level"
             value={`${assessment.riskLevel} / ${assessment.riskTrend}`}
             tone="amber"
           />
+
           <StatusTile
             icon={<BrainCircuit className="h-5 w-5" />}
             label="AI Logic"
             value="ARIE reasoning engine"
             tone="violet"
           />
+
           <StatusTile
             icon={<ShieldCheck className="h-5 w-5" />}
             label="Decision"
@@ -281,7 +285,12 @@ export default function ARIEConsole() {
       </div>
 
       <div className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr]">
-        <ClimateContext />
+        <ClimateContext
+          scenario={data.scenario}
+          fusion={data.fusion}
+          riskDrivers={assessment.drivers}
+        />
+
         <AdaptiveRiskIndex
           score={assessment.riskScore}
           level={assessment.riskLevel}
@@ -298,6 +307,7 @@ export default function ARIEConsole() {
 
       <div className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
         <OperationalDecision packages={assessment.actionPackages} />
+
         <div className="space-y-5">
           <DecisionConfidence score={assessment.decisionConfidence} />
           <ExpectedOutcome outcomes={assessment.expectedOutcomes} />
@@ -319,9 +329,11 @@ export default function ARIEConsole() {
               className="rounded-2xl border border-slate-800 bg-slate-900/60 p-3"
             >
               <div className="text-xs text-slate-500">Milestone {index + 1}</div>
+
               <div className="mt-1 text-sm font-semibold text-white">
                 {milestone.label}
               </div>
+
               <div
                 className={`mt-3 inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
                   milestone.status === "Complete"
@@ -349,7 +361,7 @@ function StatusTile({
   value,
   tone,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   value: string;
   tone: "cyan" | "amber" | "violet" | "emerald";
