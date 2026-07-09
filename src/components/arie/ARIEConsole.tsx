@@ -18,13 +18,23 @@ import { ClimateContext } from "./ClimateContext";
 import { DecisionConfidence } from "./DecisionConfidence";
 import { EvidencePanel } from "./EvidencePanel";
 import { ExpectedOutcome } from "./ExpectedOutcome";
+import { FusionTracePanel } from "./FusionTracePanel";
 import { OperationalDecision } from "./OperationalDecision";
 import { RiskDrivers } from "./RiskDrivers";
 
 import type { ArieAssessment } from "@/lib/arie/types";
+import type { ClimateFusionResult } from "@/lib/arie/climate-fusion";
 
 type ArieApiResponse = {
   generatedAt: string;
+  scenario: {
+    id: string;
+    locationName: string;
+    region: string;
+    countryContext: string;
+    livelihoodZone: string;
+  };
+  fusion: ClimateFusionResult["fusionSummary"];
   assessment: ArieAssessment;
 };
 
@@ -44,9 +54,9 @@ const scenarios = [
 const milestones = [
   { label: "Foundation", status: "Complete" },
   { label: "ARIE Intelligence Console", status: "Complete" },
-  { label: "Adaptive Risk Intelligence", status: "Active" },
-  { label: "Multi-source Climate Fusion", status: "Next" },
-  { label: "AIDA Decision Copilot", status: "Planned" },
+  { label: "Adaptive Risk Intelligence", status: "Complete" },
+  { label: "Multi-source Climate Fusion", status: "Active" },
+  { label: "AIDA Decision Copilot", status: "Next" },
   { label: "Operational Products", status: "Planned" },
   { label: "Demo & Deployment", status: "Planned" },
 ];
@@ -125,7 +135,7 @@ export default function ARIEConsole() {
     );
   }
 
-  if (errorMessage || !assessment) {
+  if (errorMessage || !assessment || !data) {
     return (
       <section className="rounded-3xl border border-red-400/20 bg-red-950/30 p-6">
         <div className="flex items-center gap-3 text-red-200">
@@ -162,7 +172,7 @@ export default function ARIEConsole() {
 
               <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-200">
                 <Activity className="h-3.5 w-3.5" />
-                Live Risk Engine
+                Fusion-Enabled Risk Engine
               </span>
             </div>
 
@@ -223,6 +233,13 @@ export default function ARIEConsole() {
               </div>
 
               <div className="flex justify-between gap-4">
+                <span>Fusion confidence</span>
+                <span className="font-semibold text-violet-200">
+                  {data.fusion.confidence}
+                </span>
+              </div>
+
+              <div className="flex justify-between gap-4">
                 <span>Generated</span>
                 <span className="font-semibold text-emerald-200">
                   {new Date(data.generatedAt).toLocaleTimeString([], {
@@ -271,6 +288,8 @@ export default function ARIEConsole() {
           trend={assessment.riskTrend}
         />
       </div>
+
+      <FusionTracePanel fusion={data.fusion} />
 
       <div className="grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
         <RiskDrivers drivers={assessment.drivers} />
