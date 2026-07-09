@@ -3,6 +3,7 @@
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import MissionControl from "@/components/layout/MissionControl";
+import { SprintClock } from "@/components/arie/SprintClock";
 import ARIEConsole from "@/components/arie/ARIEConsole";
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
         <div className="flex-1 overflow-y-auto">
           <MissionControl />
 
-          <div className="p-6">
+          <div className="space-y-6 p-6">
+            <SprintClock />
             <ARIEConsole />
           </div>
         </div>
