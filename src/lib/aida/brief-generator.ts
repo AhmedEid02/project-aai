@@ -13,9 +13,22 @@ function getTitle(mode: AidaBriefMode) {
   return titles[mode];
 }
 
+function getSomaliRiskLevel(level: string) {
+  const levels: Record<string, string> = {
+    Low: "mid hoose",
+    Moderate: "mid dhexdhexaad ah",
+    High: "mid sare",
+    Severe: "mid aad u sareeya",
+  };
+
+  return levels[level] ?? "mid u baahan taxaddar";
+}
+
 function getHeadline(input: AidaBriefInput) {
   if (input.mode === "somali") {
-    return `${input.scenario.locationName}: khatarta hadda waa ${input.assessment.riskLevel}, waxaana loo baahan yahay in tallaabo hore la qaado.`;
+    return `${input.scenario.locationName}: khatartu hadda waa ${getSomaliRiskLevel(
+      input.assessment.riskLevel,
+    )}, waxaana loo baahan yahay in tallaabo hore la qaado.`;
   }
 
   return `${input.scenario.locationName} is under ${input.assessment.riskLevel.toLowerCase()} climate-livelihood risk with ${input.assessment.operationalMode.toLowerCase()} recommended.`;
@@ -23,7 +36,7 @@ function getHeadline(input: AidaBriefInput) {
 
 function getKeyMessage(input: AidaBriefInput) {
   if (input.mode === "somali") {
-    return `ARIE waxay muujinaysaa in roob-yaraan, cadaadis biyo, iyo culays nololeed ay is biirsadeen. Go'aanka lagu taliyay waa in la dardargeliyo isku-duwidda degmada, lana gaarsiiyo bulshada fariimo fudud oo la fahmi karo.`;
+    return `ARIE waxay muujinaysaa in roob-yaraan, cadaadis biyo, iyo culays nololeed ay is biirsadeen. Go'aanka lagu taliyay waa in la dardargeliyo isku-duwidda degmada, lana gaadhsiiyo bulshada fariimo fudud oo la fahmi karo.`;
   }
 
   if (input.mode === "community") {
@@ -59,7 +72,8 @@ function getActions(input: AidaBriefInput) {
   }
 
   return input.assessment.actionPackages.map(
-    (item) => `${item.stakeholder}: ${item.action} (${item.window}, ${item.priority}).`,
+    (item) =>
+      `${item.stakeholder}: ${item.action} (${item.window}, ${item.priority}).`,
   );
 }
 
