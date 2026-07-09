@@ -26,9 +26,9 @@ export function FusionTracePanel({ fusion }: { fusion: FusionSummary }) {
           </h2>
 
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
-            This panel shows how baseline scenario values were adjusted using
-            livelihood-sensitive climate fusion rules before the ARIE risk engine
-            produced the final operational assessment.
+            This panel exposes the reasoning path between baseline climate-livelihood
+            signals and the final Adaptive Risk Index. It helps operators see what
+            changed, why it changed, and what needs field verification.
           </p>
         </div>
 
@@ -61,34 +61,43 @@ export function FusionTracePanel({ fusion }: { fusion: FusionSummary }) {
           </div>
 
           <div className="mt-4 space-y-3">
-            {fusion.adjustments.map((adjustment) => (
-              <article
-                key={`${adjustment.indicator}-${adjustment.before}-${adjustment.after}`}
-                className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4"
-              >
-                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      {formatIndicator(adjustment.indicator)}
+            {fusion.adjustments.length > 0 ? (
+              fusion.adjustments.map((adjustment) => (
+                <article
+                  key={`${adjustment.indicator}-${adjustment.before}-${adjustment.after}`}
+                  className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4"
+                >
+                  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <div className="text-sm font-semibold text-white">
+                        {formatIndicator(adjustment.indicator)}
+                      </div>
+
+                      <p className="mt-1 text-sm leading-5 text-slate-400">
+                        {adjustment.reason}
+                      </p>
                     </div>
 
-                    <p className="mt-1 text-sm leading-5 text-slate-400">
-                      {adjustment.reason}
-                    </p>
-                  </div>
+                    <div className="flex shrink-0 items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2">
+                      <span className="text-sm font-bold text-slate-300">
+                        {adjustment.before}
+                      </span>
 
-                  <div className="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2">
-                    <span className="text-sm font-bold text-slate-300">
-                      {adjustment.before}
-                    </span>
-                    <ArrowRight className="h-4 w-4 text-cyan-300" />
-                    <span className="text-sm font-bold text-white">
-                      {adjustment.after}
-                    </span>
+                      <ArrowRight className="h-4 w-4 text-cyan-300" />
+
+                      <span className="text-sm font-bold text-white">
+                        {adjustment.after}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))
+            ) : (
+              <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-400">
+                No fusion adjustment was applied. ARIE used the baseline scenario
+                values directly.
+              </div>
+            )}
           </div>
         </div>
 
