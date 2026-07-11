@@ -1,198 +1,190 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import {
-  CalendarClock,
   CheckCircle2,
-  Flame,
-  Hourglass,
+  Clock3,
+  Rocket,
+  ShieldCheck,
   TimerReset,
 } from "lucide-react";
 
-import {
-  AAI_SPRINT_START_DATE,
-  AAI_SPRINT_TOTAL_DAYS,
-  AAI_SUBMISSION_DEADLINE,
-  aaiSprintMilestones,
-} from "@/lib/aai/sprint-plan";
+const milestoneStatus = [
+  {
+    label: "Foundation",
+    status: "Complete",
+  },
+  {
+    label: "ARIE Intelligence Console",
+    status: "Complete",
+  },
+  {
+    label: "Adaptive Risk Engine",
+    status: "Complete",
+  },
+  {
+    label: "Climate Fusion Trace",
+    status: "Complete",
+  },
+  {
+    label: "AIDA Decision Partner",
+    status: "Complete",
+  },
+  {
+    label: "Operational Products",
+    status: "Complete",
+  },
+  {
+    label: "Build + Deployment",
+    status: "Active",
+  },
+  {
+    label: "Pitch + Demo",
+    status: "Next",
+  },
+];
 
-const DAY_MS = 1000 * 60 * 60 * 24;
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(date);
-}
+const finishSprint = [
+  {
+    window: "Now",
+    focus: "Freeze features and protect working build",
+    output: "No more major architecture changes",
+    status: "Complete",
+  },
+  {
+    window: "Next 3–6 hours",
+    focus: "README, demo flow, deployment notes",
+    output: "Judge-ready project documentation",
+    status: "Active",
+  },
+  {
+    window: "Next 6–12 hours",
+    focus: "Vercel deployment and UI polish",
+    output: "Public demo link",
+    status: "Next",
+  },
+  {
+    window: "Final 12–24 hours",
+    focus: "Pitch script, screenshots, submission assets",
+    output: "Final hackathon package",
+    status: "Next",
+  },
+];
 
 export function SprintClock() {
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    setNow(new Date());
-
-    const interval = window.setInterval(() => {
-      setNow(new Date());
-    }, 60_000);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  const metrics = useMemo(() => {
-    const start = new Date(AAI_SPRINT_START_DATE);
-    const submissionDeadline = new Date(AAI_SUBMISSION_DEADLINE);
-    const current = now ?? start;
-
-    const elapsedRaw =
-      Math.floor((current.getTime() - start.getTime()) / DAY_MS) + 1;
-
-    const currentDay = clamp(elapsedRaw, 1, AAI_SPRINT_TOTAL_DAYS);
-
-    const buildDaysLeft = Math.max(
-      0,
-      AAI_SPRINT_TOTAL_DAYS - currentDay + 1,
-    );
-
-    const progress = clamp(
-      Math.round((currentDay / AAI_SPRINT_TOTAL_DAYS) * 100),
-      0,
-      100,
-    );
-
-    const activeMilestone =
-      aaiSprintMilestones.find((milestone) => milestone.status === "Active") ??
-      aaiSprintMilestones[0];
-
-    return {
-      submissionDeadline,
-      currentDay,
-      buildDaysLeft,
-      progress,
-      activeMilestone,
-    };
-  }, [now]);
-
   return (
     <section className="rounded-3xl border border-slate-800 bg-slate-950 p-5 shadow-2xl">
-      <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">
-            <CalendarClock className="h-4 w-4" />
-            AAI Hackathon Sprint Clock
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">
+            <TimerReset className="h-4 w-4" />
+            AAI Final Finish Sprint
           </div>
 
           <h2 className="mt-3 text-2xl font-bold text-white">
-            Day {metrics.currentDay} of {AAI_SPRINT_TOTAL_DAYS}
+            48-hour rescue sprint: demo, deployment, and pitch
           </h2>
 
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
-            AAI is now managed as a 28-day operational build. Every day must move
-            the platform closer to a deployable early warning–to–early action
-            intelligence system.
+            The core platform is now build-safe. The remaining work is focused
+            only on documentation, deployment, demo flow, and final submission
+            materials.
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[560px]">
-          <ClockMetric
-            icon={<Hourglass className="h-4 w-4 text-amber-300" />}
-            label="Build days left"
-            value={`${metrics.buildDaysLeft}`}
-          />
+        <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 lg:min-w-80">
+          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-100">
+            <ShieldCheck className="h-4 w-4" />
+            Current status
+          </div>
 
-          <ClockMetric
-            icon={<Flame className="h-4 w-4 text-red-300" />}
-            label="Current focus"
-            value={metrics.activeMilestone.label}
-          />
+          <div className="mt-3 text-3xl font-bold text-white">
+            Build Passed
+          </div>
 
-          <ClockMetric
-            icon={<TimerReset className="h-4 w-4 text-emerald-300" />}
-            label="Submission deadline"
-            value={formatDate(metrics.submissionDeadline)}
-          />
+          <p className="mt-2 text-sm leading-6 text-emerald-100/80">
+            ARIE, Climate Fusion, AIDA, Operational Products, and all API routes
+            are production-build ready.
+          </p>
         </div>
       </div>
 
-      <div className="mt-5">
-        <div className="mb-2 flex items-center justify-between text-xs text-slate-400">
-          <span>Sprint progress</span>
-          <span>{metrics.progress}%</span>
-        </div>
-
-        <div className="h-3 overflow-hidden rounded-full bg-slate-800">
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        {finishSprint.map((item) => (
           <div
-            className="h-full rounded-full bg-cyan-400"
-            style={{ width: `${metrics.progress}%` }}
-          />
-        </div>
+            key={item.window}
+            className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                {item.window}
+              </span>
+
+              <StatusPill status={item.status} />
+            </div>
+
+            <div className="mt-3 text-sm font-semibold text-white">
+              {item.focus}
+            </div>
+
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              {item.output}
+            </p>
+          </div>
+        ))}
       </div>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-7">
-        {aaiSprintMilestones.map((milestone, index) => (
-          <article
-            key={milestone.label}
-            className="rounded-2xl border border-slate-800 bg-slate-900/60 p-3"
-          >
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-slate-500">M{index + 1}</span>
+      <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
+        <div className="mb-4 flex items-center gap-2">
+          <Rocket className="h-4 w-4 text-cyan-300" />
+          <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-200">
+            Delivery status
+          </h3>
+        </div>
 
-              {milestone.status === "Complete" && (
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-              )}
-            </div>
-
-            <div className="mt-2 text-sm font-semibold text-white">
-              {milestone.label}
-            </div>
-
-            <div className="mt-1 text-xs text-slate-500">
-              {milestone.dayRange}
-            </div>
-
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          {milestoneStatus.map((milestone) => (
             <div
-              className={`mt-3 inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
-                milestone.status === "Complete"
-                  ? "bg-emerald-400/10 text-emerald-200"
-                  : milestone.status === "Active"
-                    ? "bg-cyan-400/10 text-cyan-200"
-                    : milestone.status === "Next"
-                      ? "bg-amber-400/10 text-amber-200"
-                      : "bg-slate-800 text-slate-400"
-              }`}
+              key={milestone.label}
+              className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3"
             >
-              {milestone.status}
+              <div className="flex items-start justify-between gap-3">
+                <div className="text-sm font-semibold text-white">
+                  {milestone.label}
+                </div>
+
+                {milestone.status === "Complete" ? (
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-300" />
+                ) : (
+                  <Clock3 className="h-4 w-4 shrink-0 text-amber-300" />
+                )}
+              </div>
+
+              <div className="mt-3">
+                <StatusPill status={milestone.status} />
+              </div>
             </div>
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function ClockMetric({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-        {icon}
-        {label}
-      </div>
+function StatusPill({ status }: { status: string }) {
+  const className =
+    status === "Complete"
+      ? "bg-emerald-400/10 text-emerald-200"
+      : status === "Active"
+        ? "bg-cyan-400/10 text-cyan-200"
+        : "bg-amber-400/10 text-amber-200";
 
-      <div className="mt-2 line-clamp-2 text-sm font-bold text-white">
-        {value}
-      </div>
-    </div>
+  return (
+    <span
+      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${className}`}
+    >
+      {status}
+    </span>
   );
 }
+
+export default SprintClock;
