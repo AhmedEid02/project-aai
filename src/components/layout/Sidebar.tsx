@@ -28,22 +28,22 @@ const menuItems = [
   },
   {
     label: "Climate Fusion",
-    href: "#arie-console",
+    href: "#climate-fusion",
     icon: Layers3,
   },
   {
     label: "AIDA Briefs",
-    href: "#arie-console",
+    href: "#aida-briefs",
     icon: ScrollText,
   },
   {
     label: "Operational Products",
-    href: "#arie-console",
+    href: "#operational-products",
     icon: ClipboardCheck,
   },
   {
     label: "Evidence & Actions",
-    href: "#arie-console",
+    href: "#evidence-actions",
     icon: ShieldCheck,
   },
 ];
@@ -51,7 +51,6 @@ const menuItems = [
 export default function Sidebar() {
   return (
     <aside className="flex h-screen w-72 shrink-0 flex-col border-r border-slate-800 bg-slate-950 text-white">
-      {/* Logo */}
       <div className="border-b border-slate-800 p-6">
         <h1 className="text-3xl font-bold tracking-tight">AAI</h1>
 
@@ -64,7 +63,6 @@ export default function Sidebar() {
         </p>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 overflow-y-auto p-4">
         <div className="mb-3 px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
           Demo Navigation
@@ -89,7 +87,6 @@ export default function Sidebar() {
         </ul>
       </nav>
 
-      {/* Footer */}
       <div className="border-t border-slate-800 p-4">
         <div className="text-xs font-semibold text-slate-300">
           Prototype v1.0
