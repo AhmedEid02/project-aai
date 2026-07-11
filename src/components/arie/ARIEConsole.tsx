@@ -61,8 +61,8 @@ const milestones = [
   { label: "Adaptive Risk Intelligence", status: "Complete" },
   { label: "Multi-source Climate Fusion", status: "Complete" },
   { label: "AIDA Decision Copilot", status: "Complete" },
-  { label: "Operational Products", status: "Active" },
-  { label: "Demo & Deployment", status: "Next" },
+  { label: "Operational Products", status: "Complete" },
+  { label: "Demo & Deployment", status: "Active" },
 ];
 
 export default function ARIEConsole() {
@@ -128,9 +128,11 @@ export default function ARIEConsole() {
       <section className="flex min-h-[420px] items-center justify-center rounded-3xl border border-slate-800 bg-slate-950">
         <div className="text-center">
           <Loader2 className="mx-auto h-8 w-8 animate-spin text-cyan-300" />
+
           <h2 className="mt-4 text-lg font-semibold text-white">
             Loading ARIE intelligence cycle
           </h2>
+
           <p className="mt-2 text-sm text-slate-400">
             Pulling live risk assessment from the ARIE reasoning engine.
           </p>
@@ -301,25 +303,33 @@ export default function ARIEConsole() {
         />
       </div>
 
-      <FusionTracePanel fusion={data.fusion} />
+      <section id="climate-fusion" className="scroll-mt-6">
+        <FusionTracePanel fusion={data.fusion} />
+      </section>
 
-      <AIDecisionPartner scenarioId={selectedScenario} />
+      <section id="aida-briefs" className="scroll-mt-6">
+        <AIDecisionPartner scenarioId={selectedScenario} />
+      </section>
 
-      <OperationalProductsPanel scenarioId={selectedScenario} />
+      <section id="operational-products" className="scroll-mt-6">
+        <OperationalProductsPanel scenarioId={selectedScenario} />
+      </section>
 
-      <div className="grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
-        <RiskDrivers drivers={assessment.drivers} />
-        <EvidencePanel evidence={assessment.evidence} />
-      </div>
-
-      <div className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-        <OperationalDecision packages={assessment.actionPackages} />
-
-        <div className="space-y-5">
-          <DecisionConfidence score={assessment.decisionConfidence} />
-          <ExpectedOutcome outcomes={assessment.expectedOutcomes} />
+      <section id="evidence-actions" className="scroll-mt-6 space-y-5">
+        <div className="grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
+          <RiskDrivers drivers={assessment.drivers} />
+          <EvidencePanel evidence={assessment.evidence} />
         </div>
-      </div>
+
+        <div className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+          <OperationalDecision packages={assessment.actionPackages} />
+
+          <div className="space-y-5">
+            <DecisionConfidence score={assessment.decisionConfidence} />
+            <ExpectedOutcome outcomes={assessment.expectedOutcomes} />
+          </div>
+        </div>
+      </section>
 
       <div className="rounded-3xl border border-slate-800 bg-slate-950 p-5">
         <div className="mb-4 flex items-center gap-2">
