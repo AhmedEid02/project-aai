@@ -23,6 +23,7 @@ import { EvidencePanel } from "./EvidencePanel";
 import { ExpectedOutcome } from "./ExpectedOutcome";
 import { FusionTracePanel } from "./FusionTracePanel";
 import { OperationalDecision } from "./OperationalDecision";
+import { OperationalProductsPanel } from "./OperationalProductsPanel";
 import { RiskDrivers } from "./RiskDrivers";
 
 import type { ClimateFusionResult } from "@/lib/arie/climate-fusion";
@@ -59,9 +60,9 @@ const milestones = [
   { label: "ARIE Intelligence Console", status: "Complete" },
   { label: "Adaptive Risk Intelligence", status: "Complete" },
   { label: "Multi-source Climate Fusion", status: "Complete" },
-  { label: "AIDA Decision Copilot", status: "Active" },
-  { label: "Operational Products", status: "Next" },
-  { label: "Demo & Deployment", status: "Planned" },
+  { label: "AIDA Decision Copilot", status: "Complete" },
+  { label: "Operational Products", status: "Active" },
+  { label: "Demo & Deployment", status: "Next" },
 ];
 
 export default function ARIEConsole() {
@@ -303,6 +304,8 @@ export default function ARIEConsole() {
       <FusionTracePanel fusion={data.fusion} />
 
       <AIDecisionPartner scenarioId={selectedScenario} />
+
+      <OperationalProductsPanel scenarioId={selectedScenario} />
 
       <div className="grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
         <RiskDrivers drivers={assessment.drivers} />
