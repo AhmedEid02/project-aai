@@ -91,9 +91,6 @@ export default function IncidentForm({
         </div>
 
         <div>
-          <label className="block mb-2 font-medium">
-            Region / State
-          </label>
 
           <div>
   <label className="block mb-2 font-medium">
@@ -116,19 +113,6 @@ export default function IncidentForm({
 </div>
         </div>
 
-        <div>
-          <label className="block mb-2 font-medium">
-            District
-          </label>
-
-          <input
-            className="w-full rounded-lg border p-3"
-            value={incident.district}
-            onChange={(e) =>
-              updateField("district", e.target.value)
-            }
-          />
-        </div>
 
         <div>
           <label className="block mb-2 font-medium">

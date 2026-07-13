@@ -1,101 +1,169 @@
 "use client";
 
+import { useSidebar } from "@/context/SidebarContext";
 import {
-  BrainCircuit,
-  ClipboardCheck,
   Home,
-  Layers3,
   Rocket,
-  ScrollText,
+  Brain,
+  Layers,
+  FileText,
+  ClipboardList,
   ShieldCheck,
+  Menu,
+  X,
 } from "lucide-react";
-
-const menuItems = [
-  {
-    label: "Mission Control",
-    href: "#mission-control",
-    icon: Home,
-  },
-  {
-    label: "Final Sprint",
-    href: "#final-sprint",
-    icon: Rocket,
-  },
-  {
-    label: "ARIE Console",
-    href: "#arie-console",
-    icon: BrainCircuit,
-  },
-  {
-    label: "Climate Fusion",
-    href: "#climate-fusion",
-    icon: Layers3,
-  },
-  {
-    label: "AIDA Briefs",
-    href: "#aida-briefs",
-    icon: ScrollText,
-  },
-  {
-    label: "Operational Products",
-    href: "#operational-products",
-    icon: ClipboardCheck,
-  },
-  {
-    label: "Evidence & Actions",
-    href: "#evidence-actions",
-    icon: ShieldCheck,
-  },
-];
+import { useState, useEffect } from "react";
 
 export default function Sidebar() {
+  const { collapsed, setCollapsed } = useSidebar();
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if screen is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const menuItems = [
+    { name: "Mission Control", icon: Home, href: "#mission-control" },
+    { name: "Final Sprint", icon: Rocket, href: "#final-sprint" },
+    { name: "ARIE Console", icon: Brain, href: "#arie-console" },
+    { name: "Climate Fusion", icon: Layers, href: "#climate-fusion" },
+    { name: "AIDA Briefs", icon: FileText, href: "#aida-briefs" },
+    { name: "Operational Products", icon: ClipboardList, href: "#operational-products" },
+    { name: "Evidence & Actions", icon: ShieldCheck, href: "#evidence-actions" },
+  ];
+
+  // Mobile menu toggle
+  const toggleMobileMenu = () => {
+    setIsMobileOpen(!isMobileOpen);
+  };
+
+  // Close mobile menu when a link is clicked
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsMobileOpen(false);
+    }
+  };
+
+  // Determine sidebar classes
+  const getSidebarClasses = () => {
+    if (isMobile) {
+      return `
+        fixed left-0 top-0 h-screen z-50
+        bg-[#020617]
+        text-white
+        border-r border-slate-800
+        transition-transform duration-300
+        flex flex-col
+        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
+        w-72
+      `;
+    }
+    
+    return `
+      fixed left-0 top-0 h-screen z-50
+      bg-[#020617]
+      text-white
+      border-r border-slate-800
+      transition-all duration-300
+      flex flex-col
+      ${collapsed ? "w-20" : "w-72"}
+    `;
+  };
+
+  // Determine what to show based on collapsed state
+  const showFullContent = !collapsed || isMobile;
+
   return (
-    <aside className="flex h-screen w-72 shrink-0 flex-col border-r border-slate-800 bg-slate-950 text-white">
-      <div className="border-b border-slate-800 p-6">
-        <h1 className="text-3xl font-bold tracking-tight">AAI</h1>
+    <>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={toggleMobileMenu}
+        className="fixed top-4 left-4 z-50 md:hidden bg-[#020617] text-white p-2 rounded-lg hover:bg-slate-800 transition"
+        aria-label="Toggle Menu"
+      >
+        {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
 
-        <p className="mt-2 text-sm leading-5 text-cyan-100/80">
-          Adaptive Action Intelligence
-        </p>
+      {/* Mobile Overlay */}
+      {isMobile && isMobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={toggleMobileMenu}
+        />
+      )}
 
-        <p className="mt-3 text-xs leading-5 text-slate-500">
-          Early Warning → Coordinated Early Action
-        </p>
-      </div>
+      {/* Sidebar */}
+      <aside className={getSidebarClasses()}>
+        {/* Logo Section */}
+        <div className="p-6 border-b border-slate-800 flex-shrink-0">
+          <h1 className="text-4xl font-bold">AAI</h1>
 
-      <nav className="flex-1 overflow-y-auto p-4">
-        <div className="mb-3 px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-          Demo Navigation
+          {showFullContent && (
+            <>
+              <p className="mt-4 text-cyan-300 text-sm">
+                Adaptive Action Intelligence
+              </p>
+              <p className="mt-2 text-xs text-slate-400">
+                Early Warning → Coordinated Early Action
+              </p>
+            </>
+          )}
         </div>
 
-        <ul className="space-y-2">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
+        {/* Navigation */}
+        <nav className="flex-1 mt-6 px-4 overflow-y-auto">
+          {showFullContent && (
+            <p className="mb-4 text-xs tracking-widest text-slate-400 font-medium">
+              DEMO NAVIGATION
+            </p>
+          )}
 
-            return (
-              <li key={item.label}>
+          <div className="space-y-1">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
                 <a
+                  key={item.name}
                   href={item.href}
-                  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
+                  onClick={handleLinkClick}
+                  className="
+                    flex items-center gap-4
+                    rounded-lg
+                    px-3 py-3
+                    hover:bg-slate-800
+                    transition cursor-pointer
+                    group
+                  "
                 >
-                  <Icon className="h-4 w-4 text-cyan-300" />
-                  {item.label}
+                  <Icon className="h-5 w-5 text-cyan-400 flex-shrink-0" />
+                  {showFullContent && (
+                    <span className="text-sm font-medium text-slate-200 group-hover:text-white">
+                      {item.name}
+                    </span>
+                  )}
                 </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+              );
+            })}
+          </div>
+        </nav>
 
-      <div className="border-t border-slate-800 p-4">
-        <div className="text-xs font-semibold text-slate-300">
-          Prototype v1.0
-        </div>
-
-        <div className="mt-1 text-xs leading-5 text-slate-500">
-          IGAD/ICPAC Hackathon
-        </div>
-      </div>
-    </aside>
+        {/* Footer */}
+        {showFullContent && (
+          <div className="border-t border-slate-800 p-4 flex-shrink-0">
+            <p className="text-xs text-slate-500">Prototype v1.0</p>
+            <p className="text-xs text-slate-500">IGAD/ICPAC Hackathon</p>
+          </div>
+        )}
+      </aside>
+    </>
   );
 }
