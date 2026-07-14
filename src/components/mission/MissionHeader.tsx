@@ -8,8 +8,10 @@ import {
   ShieldAlert,
 } from "lucide-react";
 
+import { createMission } from "@/lib/mission";
+
 type MissionHeaderProps = {
-  missionId: string;
+  missionId?: string;
   location: string;
   hazard: string;
   riskLevel: string;
@@ -25,30 +27,36 @@ export default function MissionHeader({
   riskScore,
   confidence,
 }: MissionHeaderProps) {
+const mission = createMission(location, hazard);
+
+const riskColor =
+  riskScore >= 90
+    ? "text-red-500"
+    : riskScore >= 75
+    ? "text-orange-500"
+    : riskScore >= 50
+    ? "text-yellow-500"
+    : "text-emerald-500";
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-
       <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-
         <div>
-
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-600">
             Adaptive Action Intelligence
           </p>
 
           <h1 className="mt-2 text-4xl font-bold text-slate-900">
-            Mission {missionId}
+            Mission {missionId || mission.id}
           </h1>
 
           <p className="mt-3 max-w-2xl text-slate-600">
-            Operational early warning-to-early action mission generated
-            from the latest intelligence assessment.
+            Operational mission generated from fused climate intelligence,
+            AI assessment, and decision-support analytics for coordinated
+            early action.
           </p>
-
         </div>
 
         <div className="rounded-2xl bg-slate-950 p-6 text-white">
-
           <p className="text-sm text-slate-400">
             Operational Status
           </p>
@@ -61,25 +69,21 @@ export default function MissionHeader({
             Risk Score
           </p>
 
-          <div className="text-5xl font-bold">
-            {riskScore}
+          <div className={`text-5xl font-bold ${riskColor}`}>
           </div>
-
         </div>
-
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-4">
-
         <InfoCard
           icon={<MapPin size={18} />}
-          title="Operational Area"
+          title="Area of Concern"
           value={location}
         />
 
         <InfoCard
           icon={<ShieldAlert size={18} />}
-          title="Hazard"
+          title="Primary Hazard"
           value={hazard}
         />
 
@@ -91,29 +95,24 @@ export default function MissionHeader({
 
         <InfoCard
           icon={<CalendarClock size={18} />}
-          title="Generated"
-          value={new Date().toLocaleString()}
+          title="Mission Generated"
+          value={mission.generatedAt}
         />
-
       </div>
 
       <div className="mt-8 rounded-2xl border border-cyan-200 bg-cyan-50 p-5">
-
         <div className="mb-4 flex items-center gap-2">
-
           <Activity
             className="text-cyan-700"
             size={18}
           />
 
           <h3 className="font-semibold text-cyan-900">
-            Active Evidence Sources
+            Operational Intelligence Sources
           </h3>
-
         </div>
 
         <div className="flex flex-wrap gap-3">
-
           <StatusBadge
             label="Open-Meteo"
             active
@@ -136,11 +135,8 @@ export default function MissionHeader({
           <StatusBadge
             label="MODIS NDVI"
           />
-
         </div>
-
       </div>
-
     </section>
   );
 }
@@ -156,21 +152,17 @@ function InfoCard({
 }) {
   return (
     <div className="rounded-xl border bg-white p-4">
-
       <div className="flex items-center gap-2 text-cyan-700">
-
         {icon}
 
         <span className="text-sm font-medium">
           {title}
         </span>
-
       </div>
 
       <div className="mt-3 text-lg font-semibold text-slate-900">
         {value}
       </div>
-
     </div>
   );
 }
@@ -190,8 +182,7 @@ function StatusBadge({
           : "bg-slate-200 text-slate-500"
       }`}
     >
-      {active ? "● " : "○ "}
-      {label}
+      {active ? "🟢" : "🟡"} {label}
     </span>
   );
 }

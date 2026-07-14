@@ -9,12 +9,12 @@ import {
 
 type SidebarContextType = {
   collapsed: boolean;
-  toggleSidebar: () => void;
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const SidebarContext = createContext<
-  SidebarContextType | undefined
->(undefined);
+const SidebarContext = createContext<SidebarContextType | undefined>(
+  undefined
+);
 
 export function SidebarProvider({
   children,
@@ -23,16 +23,9 @@ export function SidebarProvider({
 }) {
   const [collapsed, setCollapsed] = useState(false);
 
-  function toggleSidebar() {
-    setCollapsed((prev) => !prev);
-  }
-
   return (
     <SidebarContext.Provider
-      value={{
-        collapsed,
-        toggleSidebar,
-      }}
+      value={{ collapsed, setCollapsed }}
     >
       {children}
     </SidebarContext.Provider>

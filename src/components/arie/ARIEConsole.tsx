@@ -166,10 +166,7 @@ export default function ARIEConsole() {
   }
 
   return (
-    <section
-      id="arie-console"
-      className="space-y-5 scroll-mt-6"
-    >
+    <section className="space-y-5">
       <div className="rounded-3xl border border-slate-800 bg-slate-950 p-5 shadow-2xl">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div>

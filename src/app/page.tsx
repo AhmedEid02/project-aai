@@ -1,29 +1,26 @@
 "use client";
 
-import Sidebar from "@/components/layout/Sidebar";
-import Topbar from "@/components/layout/Topbar";
+import PageLayout from "@/components/PageLayout";
 import MissionControl from "@/components/layout/MissionControl";
-
-import { SidebarProvider } from "@/context/SidebarContext";
+import { SprintClock } from "@/components/arie/SprintClock";
+import ARIEConsole from "@/components/arie/ARIEConsole";
 
 export default function Home() {
   return (
-    <SidebarProvider>
+    <PageLayout>
+      <section id="mission-control" className="scroll-mt-6">
+        <MissionControl />
+      </section>
 
-      <main className="flex h-screen bg-slate-50">
-
-        <Sidebar />
-
-        <section className="flex flex-1 flex-col">
-
-          <Topbar />
-
-          <MissionControl />
-
+      <div className="space-y-6 p-6">
+        <section id="final-sprint" className="scroll-mt-6">
+          <SprintClock />
         </section>
 
-      </main>
-
-    </SidebarProvider>
+        <section id="arie-console" className="scroll-mt-6">
+          <ARIEConsole />
+        </section>
+      </div>
+    </PageLayout>
   );
 }

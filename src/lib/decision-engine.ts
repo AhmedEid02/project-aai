@@ -1,9 +1,19 @@
 import {
-  analyzeIncident as analyzeIntelligence,
-  type Incident,
-} from "@/lib/intelligence";
+  buildSummary,
+  getPriorityActions,
+  getRecommendation,
+  getRiskIndex,
+  getStakeholders,
+} from "./arie";
 
-export type IncidentData = Incident;
+export type IncidentData = {
+  hazard: string;
+  country: string;
+  region: string;
+  district: string;
+  severity: string;
+  forecastWindow: string;
+};
 
 export type DecisionOutput = {
   summary: string;
@@ -17,42 +27,46 @@ export type DecisionOutput = {
 };
 
 export function analyzeIncident(
-  incident: IncidentData,
+  incident: IncidentData
 ): DecisionOutput {
 
-  const intelligence =
-    analyzeIntelligence(incident);
+  const riskIndex = getRiskIndex(incident.severity);
+
+  let riskLevel = "Low";
+
+  if (riskIndex >= 50) riskLevel = "High";
+  if (riskIndex >= 75) riskLevel = "Critical";
+
+  let missionStatus = "Monitoring";
+
+  if (riskIndex >= 50) missionStatus = "Preparing";
+  if (riskIndex >= 75) missionStatus = "Early Action";
+  if (riskIndex >= 90) missionStatus = "Emergency";
 
   return {
+    summary: buildSummary(
+      incident.hazard,
+      incident.district
+    ),
 
-    summary:
-      intelligence.mission.summary,
+    confidence: 88,
 
-    confidence:
-      intelligence.assessment.confidence,
+    riskIndex,
 
-    riskIndex:
-      intelligence.assessment.riskScore,
+    riskLevel,
 
-    riskLevel:
-      intelligence.assessment.riskLevel,
+    missionStatus,
 
-    missionStatus:
-      intelligence.assessment.operationalStatus,
+    recommendation: getRecommendation(
+      incident.hazard
+    ),
 
-    recommendation:
-      intelligence.assessment.recommendedDecision,
+    actions: getPriorityActions(
+      incident.hazard
+    ),
 
-    actions:
-      intelligence.assessment.actions.map(
-        (item) => item.action,
-      ),
-
-    stakeholders:
-      intelligence.assessment.actions.map(
-        (item) => item.stakeholder,
-      ),
-
+    stakeholders: getStakeholders(
+      incident.hazard
+    ),
   };
-
 }

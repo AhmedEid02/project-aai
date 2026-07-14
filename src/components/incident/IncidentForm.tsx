@@ -1,16 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import type { Incident } from "@/lib/intelligence";
+
+type IncidentData = {
+  hazard: string;
+  country: string;
+  region: string;
+  district: string;
+  severity: string;
+  forecastWindow: string;
+};
 
 type IncidentFormProps = {
-  onAnalyze: (incident: Incident) => void;
+  onAnalyze: (incident: IncidentData) => void;
 };
 
 export default function IncidentForm({
   onAnalyze,
 }: IncidentFormProps) {
-  const [incident, setIncident] = useState<Incident>({
+  const [incident, setIncident] = useState<IncidentData>({
     hazard: "Drought",
     country: "Somalia",
     region: "Somaliland",
@@ -20,17 +28,17 @@ export default function IncidentForm({
   });
 
   const updateField = (
-    field: keyof Incident,
-    value: string,
+    field: keyof IncidentData,
+    value: string
   ) => {
     setIncident({
       ...incident,
       [field]: value,
-    } as Incident);
+    });
   };
 
   return (
-    <div className="w-full max-w-4xl rounded-2xl border bg-white p-8 shadow-sm">
+    <div className="rounded-2xl border bg-white p-8 shadow-sm w-full max-w-4xl">
       <h2 className="text-2xl font-bold">
         Current Incident
       </h2>
@@ -41,10 +49,8 @@ export default function IncidentForm({
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
 
-        {/* Hazard */}
-
         <div>
-          <label className="mb-2 block font-medium">
+          <label className="block mb-2 font-medium">
             Hazard
           </label>
 
@@ -63,10 +69,8 @@ export default function IncidentForm({
           </select>
         </div>
 
-        {/* Country */}
-
         <div>
-          <label className="mb-2 block font-medium">
+          <label className="block mb-2 font-medium">
             Country
           </label>
 
@@ -86,48 +90,32 @@ export default function IncidentForm({
           </select>
         </div>
 
-        {/* Region */}
-
         <div>
-          <label className="mb-2 block font-medium">
-            Region / State
-          </label>
 
-          <input
-            className="w-full rounded-lg border p-3"
-            value={incident.region}
-            onChange={(e) =>
-              updateField("region", e.target.value)
-            }
-          />
+          <div>
+  <label className="block mb-2 font-medium">
+    District
+  </label>
+
+  <select
+    className="w-full rounded-lg border p-3"
+    value={incident.district}
+    onChange={(e) =>
+      updateField("district", e.target.value)
+    }
+  >
+    <option>Gabiley</option>
+    <option>Hargeisa</option>
+    <option>Borama</option>
+    <option>Burao</option>
+    <option>Berbera</option>
+  </select>
+</div>
         </div>
 
-        {/* District */}
 
         <div>
-          <label className="mb-2 block font-medium">
-            District
-          </label>
-
-          <select
-            className="w-full rounded-lg border p-3"
-            value={incident.district}
-            onChange={(e) =>
-              updateField("district", e.target.value)
-            }
-          >
-            <option>Gabiley</option>
-            <option>Hargeisa</option>
-            <option>Borama</option>
-            <option>Burao</option>
-            <option>Berbera</option>
-          </select>
-        </div>
-
-        {/* Severity */}
-
-        <div>
-          <label className="mb-2 block font-medium">
+          <label className="block mb-2 font-medium">
             Severity
           </label>
 
@@ -145,10 +133,8 @@ export default function IncidentForm({
           </select>
         </div>
 
-        {/* Forecast Window */}
-
         <div>
-          <label className="mb-2 block font-medium">
+          <label className="block mb-2 font-medium">
             Forecast Window
           </label>
 
@@ -170,7 +156,7 @@ export default function IncidentForm({
 
       <button
         onClick={() => onAnalyze(incident)}
-        className="mt-10 rounded-xl bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-800"
+        className="mt-10 rounded-xl bg-slate-900 px-6 py-3 text-white hover:bg-slate-800"
       >
         Analyze Situation
       </button>
