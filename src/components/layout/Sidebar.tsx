@@ -8,7 +8,11 @@ import {
   Rocket,
   ScrollText,
   ShieldCheck,
+  PanelLeftClose,
+  PanelLeftOpen,
 } from "lucide-react";
+
+import { useSidebar } from "@/context/SidebarContext";
 
 const menuItems = [
   {
@@ -49,24 +53,59 @@ const menuItems = [
 ];
 
 export default function Sidebar() {
+  const { collapsed, toggleSidebar } = useSidebar();
+
   return (
-    <aside className="flex h-screen w-72 shrink-0 flex-col border-r border-slate-800 bg-slate-950 text-white">
+    <aside
+      className={`relative flex h-screen shrink-0 flex-col border-r border-slate-800 bg-slate-950 text-white transition-all duration-300 ${
+        collapsed ? "w-20" : "w-72"
+      }`}
+    >
+      {/* Collapse Button */}
+
+      <button
+        onClick={toggleSidebar}
+        className="absolute right-4 top-4 z-50 rounded-lg p-2 text-slate-300 transition hover:bg-slate-800 hover:text-white"
+      >
+        {collapsed ? (
+          <PanelLeftOpen className="h-5 w-5" />
+        ) : (
+          <PanelLeftClose className="h-5 w-5" />
+        )}
+      </button>
+
+      {/* Header */}
+
       <div className="border-b border-slate-800 p-6">
-        <h1 className="text-3xl font-bold tracking-tight">AAI</h1>
+        {!collapsed ? (
+          <>
+            <h1 className="text-3xl font-bold tracking-tight">
+              AAI
+            </h1>
 
-        <p className="mt-2 text-sm leading-5 text-cyan-100/80">
-          Adaptive Action Intelligence
-        </p>
+            <p className="mt-2 text-sm text-cyan-100/80">
+              Adaptive Action Intelligence
+            </p>
 
-        <p className="mt-3 text-xs leading-5 text-slate-500">
-          Early Warning → Coordinated Early Action
-        </p>
+            <p className="mt-3 text-xs text-slate-500">
+              Early Warning → Coordinated Early Action
+            </p>
+          </>
+        ) : (
+          <div className="mt-4 flex justify-center">
+            <span className="text-3xl font-bold">A</span>
+          </div>
+        )}
       </div>
 
+      {/* Navigation */}
+
       <nav className="flex-1 overflow-y-auto p-4">
-        <div className="mb-3 px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-          Demo Navigation
-        </div>
+        {!collapsed && (
+          <div className="mb-4 px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+            Operational Modules
+          </div>
+        )}
 
         <ul className="space-y-2">
           {menuItems.map((item) => {
@@ -76,10 +115,18 @@ export default function Sidebar() {
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
+                  title={collapsed ? item.label : ""}
+                  className={`flex items-center rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-slate-800 hover:text-white ${
+                    collapsed
+                      ? "justify-center text-cyan-300"
+                      : "gap-3 text-slate-200"
+                  }`}
                 >
-                  <Icon className="h-4 w-4 text-cyan-300" />
-                  {item.label}
+                  <Icon className="h-5 w-5" />
+
+                  {!collapsed && (
+                    <span>{item.label}</span>
+                  )}
                 </a>
               </li>
             );
@@ -87,14 +134,30 @@ export default function Sidebar() {
         </ul>
       </nav>
 
-      <div className="border-t border-slate-800 p-4">
-        <div className="text-xs font-semibold text-slate-300">
-          Prototype v1.0
-        </div>
+      {/* Footer */}
 
-        <div className="mt-1 text-xs leading-5 text-slate-500">
-          IGAD/ICPAC Hackathon
-        </div>
+      <div className="border-t border-slate-800 p-4">
+        {!collapsed ? (
+          <>
+            <div className="text-xs font-semibold text-slate-300">
+              Prototype v1.0
+            </div>
+
+            <div className="mt-1 text-xs text-slate-500">
+              IGAD / ICPAC Hackathon
+            </div>
+
+            <div className="mt-2 text-xs text-cyan-400">
+              Operational Demo
+            </div>
+          </>
+        ) : (
+          <div className="flex justify-center">
+            <span className="rounded-full bg-cyan-500 px-2 py-1 text-xs font-bold text-slate-950">
+              A
+            </span>
+          </div>
+        )}
       </div>
     </aside>
   );

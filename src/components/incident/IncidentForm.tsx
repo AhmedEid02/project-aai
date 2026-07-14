@@ -1,24 +1,16 @@
 "use client";
 
 import { useState } from "react";
-
-type IncidentData = {
-  hazard: string;
-  country: string;
-  region: string;
-  district: string;
-  severity: string;
-  forecastWindow: string;
-};
+import type { Incident } from "@/lib/intelligence";
 
 type IncidentFormProps = {
-  onAnalyze: (incident: IncidentData) => void;
+  onAnalyze: (incident: Incident) => void;
 };
 
 export default function IncidentForm({
   onAnalyze,
 }: IncidentFormProps) {
-  const [incident, setIncident] = useState<IncidentData>({
+  const [incident, setIncident] = useState<Incident>({
     hazard: "Drought",
     country: "Somalia",
     region: "Somaliland",
@@ -28,17 +20,17 @@ export default function IncidentForm({
   });
 
   const updateField = (
-    field: keyof IncidentData,
-    value: string
+    field: keyof Incident,
+    value: string,
   ) => {
     setIncident({
       ...incident,
       [field]: value,
-    });
+    } as Incident);
   };
 
   return (
-    <div className="rounded-2xl border bg-white p-8 shadow-sm w-full max-w-4xl">
+    <div className="w-full max-w-4xl rounded-2xl border bg-white p-8 shadow-sm">
       <h2 className="text-2xl font-bold">
         Current Incident
       </h2>
@@ -49,8 +41,10 @@ export default function IncidentForm({
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
 
+        {/* Hazard */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             Hazard
           </label>
 
@@ -69,8 +63,10 @@ export default function IncidentForm({
           </select>
         </div>
 
+        {/* Country */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             Country
           </label>
 
@@ -90,48 +86,48 @@ export default function IncidentForm({
           </select>
         </div>
 
+        {/* Region */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             Region / State
           </label>
 
-          <div>
-  <label className="block mb-2 font-medium">
-    District
-  </label>
-
-  <select
-    className="w-full rounded-lg border p-3"
-    value={incident.district}
-    onChange={(e) =>
-      updateField("district", e.target.value)
-    }
-  >
-    <option>Gabiley</option>
-    <option>Hargeisa</option>
-    <option>Borama</option>
-    <option>Burao</option>
-    <option>Berbera</option>
-  </select>
-</div>
+          <input
+            className="w-full rounded-lg border p-3"
+            value={incident.region}
+            onChange={(e) =>
+              updateField("region", e.target.value)
+            }
+          />
         </div>
 
+        {/* District */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             District
           </label>
 
-          <input
+          <select
             className="w-full rounded-lg border p-3"
             value={incident.district}
             onChange={(e) =>
               updateField("district", e.target.value)
             }
-          />
+          >
+            <option>Gabiley</option>
+            <option>Hargeisa</option>
+            <option>Borama</option>
+            <option>Burao</option>
+            <option>Berbera</option>
+          </select>
         </div>
 
+        {/* Severity */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             Severity
           </label>
 
@@ -149,8 +145,10 @@ export default function IncidentForm({
           </select>
         </div>
 
+        {/* Forecast Window */}
+
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="mb-2 block font-medium">
             Forecast Window
           </label>
 
@@ -172,7 +170,7 @@ export default function IncidentForm({
 
       <button
         onClick={() => onAnalyze(incident)}
-        className="mt-10 rounded-xl bg-slate-900 px-6 py-3 text-white hover:bg-slate-800"
+        className="mt-10 rounded-xl bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-800"
       >
         Analyze Situation
       </button>

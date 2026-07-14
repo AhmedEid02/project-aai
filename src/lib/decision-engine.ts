@@ -1,19 +1,9 @@
 import {
-  buildSummary,
-  getPriorityActions,
-  getRecommendation,
-  getRiskIndex,
-  getStakeholders,
-} from "./arie";
+  analyzeIncident as analyzeIntelligence,
+  type Incident,
+} from "@/lib/intelligence";
 
-export type IncidentData = {
-  hazard: string;
-  country: string;
-  region: string;
-  district: string;
-  severity: string;
-  forecastWindow: string;
-};
+export type IncidentData = Incident;
 
 export type DecisionOutput = {
   summary: string;
@@ -27,46 +17,42 @@ export type DecisionOutput = {
 };
 
 export function analyzeIncident(
-  incident: IncidentData
+  incident: IncidentData,
 ): DecisionOutput {
 
-  const riskIndex = getRiskIndex(incident.severity);
-
-  let riskLevel = "Low";
-
-  if (riskIndex >= 50) riskLevel = "High";
-  if (riskIndex >= 75) riskLevel = "Critical";
-
-  let missionStatus = "Monitoring";
-
-  if (riskIndex >= 50) missionStatus = "Preparing";
-  if (riskIndex >= 75) missionStatus = "Early Action";
-  if (riskIndex >= 90) missionStatus = "Emergency";
+  const intelligence =
+    analyzeIntelligence(incident);
 
   return {
-    summary: buildSummary(
-      incident.hazard,
-      incident.district
-    ),
 
-    confidence: 88,
+    summary:
+      intelligence.mission.summary,
 
-    riskIndex,
+    confidence:
+      intelligence.assessment.confidence,
 
-    riskLevel,
+    riskIndex:
+      intelligence.assessment.riskScore,
 
-    missionStatus,
+    riskLevel:
+      intelligence.assessment.riskLevel,
 
-    recommendation: getRecommendation(
-      incident.hazard
-    ),
+    missionStatus:
+      intelligence.assessment.operationalStatus,
 
-    actions: getPriorityActions(
-      incident.hazard
-    ),
+    recommendation:
+      intelligence.assessment.recommendedDecision,
 
-    stakeholders: getStakeholders(
-      incident.hazard
-    ),
+    actions:
+      intelligence.assessment.actions.map(
+        (item) => item.action,
+      ),
+
+    stakeholders:
+      intelligence.assessment.actions.map(
+        (item) => item.stakeholder,
+      ),
+
   };
+
 }
