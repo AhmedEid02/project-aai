@@ -1,6 +1,15 @@
 # Adaptive Action Intelligence (AAI)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Hackathon%20Prototype-orange)
 
-**From Early Warning to Coordinated Early Action**
+## Dashboard
+
+![AAI Dashboard](docs/images/dashboard.png)
+
+**Transforming climate intelligence into coordinated early action through explainable AI.**
 
 Adaptive Action Intelligence (AAI) is a climate decision-support platform built for the IGAD/ICPAC Early Warning–Early Action Hackathon. It transforms climate signals, livelihood stress, exposure, coping pressure, and coordination readiness into explainable operational decisions for governments, humanitarian partners, and communities.
 
@@ -45,6 +54,15 @@ It combines:
    A product layer that generates structured outputs such as Situation Reports, Government Action Notes, Humanitarian Coordination Notes, Community Advisories, and Somali last-mile messages.
 
 ---
+## Key Capabilities
+
+- AI-powered operational risk assessment
+- Explainable decision intelligence (ARIE)
+- Audience-specific operational brief generation (AIDA)
+- Climate-livelihood fusion analytics
+- Mission-based operational workflow
+- Operational product generation
+- Somali last-mile communication support
 
 ## Current Demo Scenarios
 
@@ -203,19 +221,63 @@ The platform focuses on turning climate information into action, not only displa
 
 ## Architecture
 
-```text
-Climate / Livelihood Scenario
-        ↓
-Climate Fusion Layer
-        ↓
-ARIE Risk Engine
-        ↓
-Adaptive Risk Index
-        ↓
-Evidence + Driver Trace
-        ↓
-AIDA Decision Partner
-        ↓
-Operational Products
-        ↓
-Government, Humanitarian, and Community Action
+```mermaid
+flowchart TD
+
+A[Climate & Livelihood Signals]
+B[Climate Fusion Layer]
+C[ARIE Intelligence Engine]
+D[Adaptive Risk Index]
+E[Evidence Trace]
+F[AIDA Decision Partner]
+G[Operational Products]
+H[Government, Humanitarian & Community Action]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+```
+
+## Technology Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Leaflet
+- Open-Meteo API
+- Lucide React
+
+  src/
+ ├── app/
+ ├── components/
+ ├── intelligence/
+ │     ├── ARIE
+ │     ├── AIDA
+ │     └── Reports
+ ├── lib/
+ └── context/
+
+git clone https://github.com/AhmedEid02/project-aai
+
+cd project-aai
+
+npm install
+
+npm run dev
+
+## Vision
+
+AAI is designed as a foundation for next-generation Early Warning–to–Early Action systems across the IGAD region. Future work includes integrating real-time climate services, impact forecasting, geospatial analytics, multilingual communication, and operational coordination tools to strengthen anticipatory action and climate resilience.
+
+## Team
+
+Ahmed Hussein Ismail
+Project Lead | Climate Intelligence | Agro-Meteorology | Early Warning | Geospatial Analytics
+
+Rihana Hassan Muhumed 
+Frontend Development | User Experience | Responsive Interface
