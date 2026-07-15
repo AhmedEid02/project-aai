@@ -318,8 +318,7 @@ AAI is designed as a foundation for next-generation Early Warning–to–Early A
 
 ## Team
 
-Ahmed Hussein Ismail
-Project Lead | Climate Intelligence | Agro-Meteorology | Early Warning | Geospatial Analytics
-
-Rihana Hassan Muhumed 
-Frontend Development | User Experience | Responsive Interface
+| Member | Role | Expertise |
+|---------|------|-----------|
+| **Ahmed Hussein Ismail** | Project Lead | Climate Intelligence • Agro-Meteorology • Early Warning & Early Action • Geospatial Analytics |
+| **Rihana Hassan Muhumed** | Frontend Developer | Frontend Development • User Experience (UX) • Responsive Interface Design • React & Next.js |
