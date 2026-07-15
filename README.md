@@ -244,32 +244,74 @@ G --> H
 
 ## Technology Stack
 
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS
-- Leaflet
-- Open-Meteo API
-- Lucide React
+AAI is built using a modern web and geospatial technology stack:
 
-  src/
- ├── app/
- ├── components/
- ├── intelligence/
- │     ├── ARIE
- │     ├── AIDA
- │     └── Reports
- ├── lib/
- └── context/
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS**
+- **Leaflet**
+- **Open-Meteo API**
+- **Lucide React**
 
-git clone https://github.com/AhmedEid02/project-aai
+---
 
+## Project Structure
+
+```text
+src/
+├── app/
+├── components/
+│   ├── arie/
+│   ├── decision/
+│   ├── incident/
+│   ├── layout/
+│   ├── map/
+│   ├── mission/
+│   ├── reports/
+│   ├── stakeholders/
+│   └── weather/
+├── context/
+├── lib/
+│   ├── intelligence/
+│   ├── reports/
+│   └── decision-engine.ts
+└── types/
+```
+
+---
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/AhmedEid02/project-aai.git
+```
+
+Navigate to the project:
+
+```bash
 cd project-aai
+```
 
+Install dependencies:
+
+```bash
 npm install
+```
 
+Run the development server:
+
+```bash
 npm run dev
+```
 
+Open your browser and visit:
+
+```text
+http://localhost:3000
+```
 ## Vision
 
 AAI is designed as a foundation for next-generation Early Warning–to–Early Action systems across the IGAD region. Future work includes integrating real-time climate services, impact forecasting, geospatial analytics, multilingual communication, and operational coordination tools to strengthen anticipatory action and climate resilience.
