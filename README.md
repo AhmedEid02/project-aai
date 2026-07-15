@@ -21,7 +21,7 @@ AAI is designed around one core question:
 
 ## Problem
 
-In climate-vulnerable dryland contexts such as Somaliland and Somalia, early warning information often exists, but it does not always translate into timely action.
+In climate-vulnerable dryland contexts such as Somalia, early warning information often exists, but it does not always translate into timely action.
 
 Common gaps include:
 
