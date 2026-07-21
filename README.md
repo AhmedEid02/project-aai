@@ -28,7 +28,7 @@
 
 ---
 
-> **📷 Replace this section with a full-width screenshot of the Mission Control dashboard.**
+> **<img width="1731" height="800" alt="01_Home_Mission_Control png" src="https://github.com/user-attachments/assets/f1d581fa-08db-4dae-b786-1786fd47629d" />**
 
 ---
 
@@ -251,7 +251,8 @@ Mission Control provides decision-makers with a centralized workspace for monito
 - Operational navigation
 - Decision support entry point
 
-📷 **Screenshot:** *Mission Control Dashboard*
+ ** <img width="1731" height="800" alt="01_Home_Mission_Control png" src="https://github.com/user-attachments/assets/a1a02530-f5c6-46eb-877f-cc6b2af22416" />
+**
 
 ---
 
@@ -269,7 +270,8 @@ ARIE evaluates climate evidence, contextual information, and operational indicat
 - Adaptive operational prioritization
 - Transparent intelligence generation
 
-📷 **Screenshot:** *ARIE Console*
+**<img width="1731" height="800" alt="ARIE Console" src="https://github.com/user-attachments/assets/783b3b09-b877-4c71-8b62-3b5660fec05b" />
+**
 
 ---
 
@@ -286,8 +288,6 @@ Climate Evidence provides visibility into the scientific and contextual informat
 - Contextual interpretation
 - Explainable intelligence support
 
-📷 **Screenshot:** *Climate Evidence Panel*
-
 ---
 
 ## 🔄 Climate Fusion Trace
@@ -303,7 +303,8 @@ Climate Fusion Trace illustrates how multiple information sources are combined t
 - Intelligence traceability
 - Decision audit support
 
-📷 **Screenshot:** *Climate Fusion Trace*
+**<img width="1731" height="800" alt="03_Climate_Fusion" src="https://github.com/user-attachments/assets/f42cf7b1-5569-4300-b0c6-dcd567b23bed" />
+** 
 
 ---
 
@@ -320,8 +321,6 @@ The Adaptive Risk Index summarizes multiple risk dimensions into a single operat
 - Operational prioritization
 - Decision support visualization
 
-📷 **Screenshot:** *Adaptive Risk Index*
-
 ---
 
 ## 🎯 Mission Readiness Assessment
@@ -336,8 +335,6 @@ Mission Readiness provides an overview of operational preparedness by evaluating
 - Operational readiness monitoring
 - Decision confidence support
 - Mission planning assistance
-
-📷 **Screenshot:** *Mission Readiness Dashboard*
 
 ---
 
@@ -354,7 +351,8 @@ AIDA converts operational intelligence into audience-specific recommendations th
 - Audience-specific guidance
 - Operational planning assistance
 
-📷 **Screenshot:** *Executive Intelligence Brief*
+**<img width="1731" height="800" alt="05_AIDA_Executive_Brief" src="https://github.com/user-attachments/assets/3679517b-565f-4785-95da-32e276f9f908" />
+**
 
 ---
 
@@ -380,7 +378,8 @@ AAI produces operational products tailored to different audiences while maintain
 - Rapid product generation
 - Evidence-based reporting
 
-📷 **Screenshot:** *Operational Products Panel*
+**<img width="1731" height="800" alt="07_Operational_Products" src="https://github.com/user-attachments/assets/9eb27e4e-fd92-41e5-a21e-567bb9983563" />
+** 
 
 ---
 
