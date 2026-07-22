@@ -111,94 +111,20 @@ This layered architecture enables AAI to move beyond hazard monitoring by suppor
 
 # 🏗 Operational Intelligence Framework
 
-```text
-                         Adaptive Action Intelligence (AAI)
+The AAI architecture connects climate evidence, multi-source fusion, explainable risk assessment, decision assistance, and stakeholder-specific operational products within one traceable intelligence pipeline.
 
-┌─────────────────────────────────────────────────────────────────────┐
-│                     Climate Evidence Layer                          │
-├─────────────────────────────────────────────────────────────────────┤
-│ • Weather Forecasts                                                 │
-│ • Satellite Observations                                            │
-│ • Historical Climate Records                                        │
-│ • Community Reports                                                 │
-│ • Vulnerability & Exposure Information                              │
-└─────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                      Climate Fusion Layer                           │
-├─────────────────────────────────────────────────────────────────────┤
-│ Integrates environmental, climatic, and contextual evidence into    │
-│ a unified operational picture.                                      │
-└─────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│         ARIE – Adaptive Risk Intelligence Engine                    │
-├─────────────────────────────────────────────────────────────────────┤
-│ • Risk Assessment                                                   │
-│ • Climate Evidence Evaluation                                       │
-│ • Confidence Scoring                                                │
-│ • Explainable Operational Reasoning                                 │
-└─────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│     AIDA – Adaptive Intelligence Decision Assistant                │
-├─────────────────────────────────────────────────────────────────────┤
-│ • Decision Support                                                  │
-│ • Operational Recommendations                                       │
-│ • Mission Planning                                                  │
-│ • Stakeholder-Specific Guidance                                     │
-└─────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                   Operational Products Layer                        │
-├─────────────────────────────────────────────────────────────────────┤
-│ • Executive Intelligence Brief                                      │
-│ • Situation Report                                                  │
-│ • Government Action Brief                                           │
-│ • Humanitarian Coordination Note                                    │
-│ • Community Advisory                                                │
-└─────────────────────────────────────────────────────────────────────┘
-```
+![AAI System Architecture](docs/assets/AAI_System_Architecture.png)
 
-> **Future enhancement:** This text diagram will be replaced with a professionally designed architecture graphic in a future release.
-
+*Figure 1. Adaptive Action Intelligence system architecture, showing the progression from climate evidence to coordinated operational products.*
 ---
 
 # 🔄 Operational Workflow
 
-AAI follows a transparent operational workflow that ensures every recommendation can be traced back to supporting evidence.
+AAI follows a transparent operational workflow in which every recommendation can be traced from climate evidence through risk assessment, decision intelligence, mission planning, and coordinated early action.
 
-```text
-Climate Monitoring
-        │
-        ▼
-Evidence Collection
-        │
-        ▼
-Climate Fusion
-        │
-        ▼
-Risk Assessment (ARIE)
-        │
-        ▼
-Decision Intelligence (AIDA)
-        │
-        ▼
-Mission Planning
-        │
-        ▼
-Operational Products
-        │
-        ▼
-Coordinated Early Action
-```
+![AAI Operational Workflow](docs/assets/AAI_Operational_Workflow.png)
 
-Each stage contributes to building operational confidence by transforming raw climate information into explainable, actionable intelligence.
-
+*Figure 2. AAI operational workflow from climate monitoring and evidence collection to coordinated early action.*
 ---
 
 # 🎯 Core Design Principles
