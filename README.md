@@ -314,15 +314,15 @@ The following screenshots highlight the major operational components of Adaptive
 
 | Mission Control | Situation Awareness |
 |-----------------|---------------------|
-| ![Mission Control](docs/assets/01_Home_Mission_Control.png) | ![Situation Awareness](docs/assets/02_Situation_Awareness.png) |
+| ![Mission Control](docs/assets/01_Home_Mission_Control.png.jpeg) | ![Situation Awareness](docs/assets/02_Situation_Awareness.jpeg) |
 
 | Climate Fusion | Decision Intelligence |
 |----------------|-----------------------|
-| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence](docs/assets/02_Decision_Intelligence.png) |
+| ![Climate Fusion](docs/assets/03_Climate_Fusion.jpeg) | ![Decision Intelligence](docs/assets/04_Decision_Intelligence.jpeg) |
 
 | AIDA Decision Partner | Operational Products |
-|------------------------|----------------------|
-| ![AIDA Decision Partner](docs/assets/05_AIDA_Executive_Brief.png) | ![Operational Products](docs/assets/07_Operational_Products.png) |
+|-----------------------|----------------------|
+| ![AIDA Decision Partner](docs/assets/05_AIDA_Executive_Brief.jpeg) | ![Operational Products](docs/assets/07_Operational_Products.jpeg) |
 
 > **Note:** Screenshots were captured from Version 1.0 of Adaptive Action Intelligence (AAI), developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
 
