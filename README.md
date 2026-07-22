@@ -392,14 +392,13 @@ The following screenshots highlight the major operational components of Adaptive
 
 | Climate Fusion | Decision Intelligence |
 |----------------|-----------------------|
-| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence (docs/assets/<img width="1731" height="800" alt="02_Decision_Intelligence" src="https://github.com/user-attachments/assets/7e05801b-7d20-4175-b8f5-4dc4c915e3fc" />
-) |
+| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence](docs/assets/02_Decision_Intelligence.png) |
 
-| AIDA Decision Assistant | Operational Products |
-|-------------------------|----------------------|
-| ![AIDA](docs/assets/05_AIDA_Executive_Brief.png) | ![Operational Products](docs/assets/07_Operational_Products.png) |
+| AIDA Decision Partner | Operational Products |
+|------------------------|----------------------|
+| ![AIDA Decision Partner](docs/assets/05_AIDA_Executive_Brief.png) | ![Operational Products](docs/assets/07_Operational_Products.png) |
 
-> **Note:** Screenshots were captured from Version 1.0 of Adaptive Action Intelligence, developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
+> **Note:** Screenshots were captured from Version 1.0 of Adaptive Action Intelligence (AAI), developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
 
 ---
 # 💻 Technology Stack
