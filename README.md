@@ -345,7 +345,7 @@ Adaptive Action Intelligence (AAI) is built using a modular web, geospatial, and
 
 | Technology or Service | Purpose |
 |-----------------------|---------|
-| **Open-Meteo API** | Current weather observations and forecast signals |
+| **Open-Meteo API** | Current weather observations and forecast signals used by the prototype |
 | **OpenStreetMap** | Basemap tiles and geographic reference context |
 | **Leaflet** | Interactive geospatial visualization engine |
 | **React Leaflet** | React components for maps, markers, popups, and spatial interaction |
@@ -365,53 +365,41 @@ Adaptive Action Intelligence (AAI) is built using a modular web, geospatial, and
 
 | Capability | Purpose |
 |------------|---------|
-| **Executive Intelligence Brief** | Senior-level risk and early-action communication |
-| **Government Action Brief** | Decision support for public institutions and DRM actors |
+| **Executive Intelligence Brief** | Senior-level climate-risk and early-action communication |
+| **Government Action Brief** | Decision support for public institutions and disaster-risk-management actors |
 | **Humanitarian Coordination Note** | Shared operational guidance for response partners |
 | **Community Advisory** | Accessible last-mile risk and action communication |
 | **PDF Report Generation** | Exportable operational intelligence products |
 
----
-## Intelligence Layer
+## Climate Integration Readiness
 
-| Component | Purpose |
-|-----------|---------|
-| **ARIE** | Adaptive Risk Intelligence Engine |
-| **AIDA** | Adaptive Intelligence Decision Assistant |
-| **Climate Fusion Layer** | Multi-source evidence integration |
-| **Decision Engine** | Operational reasoning and recommendations |
-| **Operational Product Generator** | Audience-specific intelligence products |
+The current prototype demonstrates the operational intelligence workflow using representative climate information, Open-Meteo weather signals, and modular data services.
 
----
+The architecture is designed to support future integration with operational climate and contextual information sources, including:
 
-## Climate Intelligence
-
-The current prototype demonstrates the operational intelligence workflow using representative climate information and modular data services.
-
-The architecture is designed to support integration with operational climate services, including:
-
-- National Meteorological Services
+- National Meteorological and Hydrological Services
 - Regional Climate Centres
 - Satellite observations
-- Climate databases
+- Historical climate databases
+- Vulnerability and exposure datasets
 - Community observations
-- Impact reports
+- Impact and field reports
 
-Future releases will support real-time data integration through modular service connectors.
-
----
+Future releases can introduce additional real-time and geospatial data connectors without changing the core ARIE–AIDA operational workflow.
 
 ## User Experience
 
-AAI has been designed around operational usability rather than technical complexity.
+AAI is designed around operational usability rather than technical complexity.
 
 Key interface characteristics include:
 
 - Responsive dashboard layout
 - Explainable intelligence panels
 - Mission-oriented navigation
-- Audience-focused reporting
-- Interactive operational products
+- Interactive geospatial context
+- Audience-specific decision products
+- Accessible operational reporting
+- Clear progression from climate evidence to early action
 
 ---
 
