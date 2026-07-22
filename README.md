@@ -270,8 +270,7 @@ ARIE evaluates climate evidence, contextual information, and operational indicat
 - Adaptive operational prioritization
 - Transparent intelligence generation
 
-**<img width="1731" height="800" alt="ARIE Console" src="https://github.com/user-attachments/assets/783b3b09-b877-4c71-8b62-3b5660fec05b" />
-**
+**<img width="1731" height="800" alt="02_Decision_Intelligence" src="https://github.com/user-attachments/assets/0cfb6aa0-206d-4cbd-9c75-535fc5bc1d1e" />**
 
 ---
 
@@ -385,25 +384,21 @@ AAI produces operational products tailored to different audiences while maintain
 
 # 🖼 Dashboard Gallery
 
-The following screenshots illustrate the primary operational components of Adaptive Action Intelligence.
+The following screenshots highlight the major operational components of Adaptive Action Intelligence.
 
-| Mission Control | ARIE Console |
-|-----------------|--------------|
-| *Insert Screenshot* | *Insert Screenshot* |
+| Mission Control | Situation Awareness |
+|-----------------|---------------------|
+| ![Mission Control](docs/assets/01_Home_Mission_Control.png) | ![Situation Awareness](docs/assets/02_Situation_Awareness.png) |
 
-| Climate Evidence | Climate Fusion Trace |
-|------------------|----------------------|
-| *Insert Screenshot* | *Insert Screenshot* |
+| Climate Fusion | Decision Intelligence |
+|----------------|-----------------------|
+| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence (docs/assets/04_Decision_Intelligence.png) |
 
-| Adaptive Risk Index | Mission Readiness |
-|---------------------|-------------------|
-| *Insert Screenshot* | *Insert Screenshot* |
+| AIDA Decision Assistant | Operational Products |
+|-------------------------|----------------------|
+| ![AIDA](docs/assets/05_AIDA_Executive_Brief.png) | ![Operational Products](docs/assets/07_Operational_Products.png) |
 
-| Executive Intelligence Brief | Operational Products |
-|------------------------------|----------------------|
-| *Insert Screenshot* | *Insert Screenshot* |
-
-> **Note:** The screenshots shown above were captured from the current prototype (Version 1.0) developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
+> **Note:** Screenshots were captured from Version 1.0 of Adaptive Action Intelligence, developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
 
 ---
 # 💻 Technology Stack
