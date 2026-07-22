@@ -328,6 +328,50 @@ The following screenshots highlight the major operational components of Adaptive
 
 ---
 
+# 💻 Technology Stack
+
+Adaptive Action Intelligence (AAI) is built using a modular web, geospatial, and climate-intelligence stack designed for transparency, maintainability, and operational decision support.
+
+## Frontend Application
+
+| Technology | Purpose |
+|------------|---------|
+| **Next.js 16** | Full-stack React framework and application routing |
+| **React 19** | Interactive user-interface components |
+| **TypeScript 5** | Type-safe application development |
+| **Tailwind CSS 4** | Responsive interface design and styling |
+
+## Climate and Geospatial Services
+
+| Technology or Service | Purpose |
+|-----------------------|---------|
+| **Open-Meteo API** | Current weather observations and forecast signals |
+| **OpenStreetMap** | Basemap tiles and geographic reference context |
+| **Leaflet** | Interactive geospatial visualization engine |
+| **React Leaflet** | React components for maps, markers, popups, and spatial interaction |
+
+## Intelligence Layer
+
+| Component | Purpose |
+|-----------|---------|
+| **ARIE** | Adaptive Risk Intelligence Engine for explainable climate-risk assessment |
+| **AIDA** | Adaptive Intelligence Decision Assistant for audience-specific recommendations |
+| **Climate Fusion Layer** | Integration of climate, environmental, and contextual evidence |
+| **Decision Engine** | Operational reasoning, prioritization, and action guidance |
+| **Mission Readiness Framework** | Assessment of preparedness and response readiness |
+| **Operational Product Generator** | Production of stakeholder-specific briefs, reports, and advisories |
+
+## Operational Outputs
+
+| Capability | Purpose |
+|------------|---------|
+| **Executive Intelligence Brief** | Senior-level risk and early-action communication |
+| **Government Action Brief** | Decision support for public institutions and DRM actors |
+| **Humanitarian Coordination Note** | Shared operational guidance for response partners |
+| **Community Advisory** | Accessible last-mile risk and action communication |
+| **PDF Report Generation** | Exportable operational intelligence products |
+
+---
 ## Intelligence Layer
 
 | Component | Purpose |
