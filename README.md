@@ -392,7 +392,8 @@ The following screenshots highlight the major operational components of Adaptive
 
 | Climate Fusion | Decision Intelligence |
 |----------------|-----------------------|
-| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence (docs/assets/04_Decision_Intelligence.png) |
+| ![Climate Fusion](docs/assets/03_Climate_Fusion.png) | ![Decision Intelligence (docs/assets/<img width="1731" height="800" alt="02_Decision_Intelligence" src="https://github.com/user-attachments/assets/7e05801b-7d20-4175-b8f5-4dc4c915e3fc" />
+) |
 
 | AIDA Decision Assistant | Operational Products |
 |-------------------------|----------------------|
