@@ -327,21 +327,6 @@ The following screenshots highlight the major operational components of Adaptive
 > **Note:** Screenshots were captured from Version 1.0 of Adaptive Action Intelligence (AAI), developed for the IGAD / ICPAC Early Warning–to–Early Action Hackathon.
 
 ---
-# 💻 Technology Stack
-
-Adaptive Action Intelligence (AAI) is built using a modern, modular web technology stack designed for scalability, maintainability, and operational decision support.
-
-## Frontend
-
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16** | Full-stack React framework |
-| **React 19** | Interactive user interface |
-| **TypeScript** | Type-safe application development |
-| **Tailwind CSS** | Utility-first responsive styling |
-| **Leaflet** | Interactive geospatial visualization |
-
----
 
 ## Intelligence Layer
 
