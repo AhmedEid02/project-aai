@@ -51,7 +51,7 @@ export default function Topbar() {
       {/* Right Side */}
       <div className="flex items-center gap-4">
         <div className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700">
-          Ahmed
+          AAI Team
         </div>
       </div>
     </header>

@@ -1,15 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-type IncidentData = {
-  hazard: string;
-  country: string;
-  region: string;
-  district: string;
-  severity: string;
-  forecastWindow: string;
-};
+import type { Incident } from "@/lib/intelligence";
+type IncidentData = Incident;
 
 type IncidentFormProps = {
   onAnalyze: (incident: IncidentData) => void;
@@ -27,18 +20,18 @@ export default function IncidentForm({
     forecastWindow: "7 Days",
   });
 
-  const updateField = (
-    field: keyof IncidentData,
-    value: string
-  ) => {
-    setIncident({
-      ...incident,
-      [field]: value,
-    });
-  };
+  const updateField = <K extends keyof IncidentData>(
+  field: K,
+  value: IncidentData[K]
+) => {
+  setIncident((prev) => ({
+    ...prev,
+    [field]: value,
+  }));
+};
 
   return (
-    <div className="rounded-2xl border bg-white p-8 shadow-sm w-full max-w-4xl">
+    <div className="rounded-2xl border bg-white p-6 shadow-sm h-full">
       <h2 className="text-2xl font-bold">
         Current Incident
       </h2>
@@ -78,8 +71,11 @@ export default function IncidentForm({
             className="w-full rounded-lg border p-3"
             value={incident.country}
             onChange={(e) =>
-              updateField("country", e.target.value)
-            }
+  updateField(
+    "severity",
+    e.target.value as Incident["severity"]
+  )
+}
           >
             <option>Somalia</option>
             <option>Kenya</option>
@@ -122,9 +118,9 @@ export default function IncidentForm({
           <select
             className="w-full rounded-lg border p-3"
             value={incident.severity}
-            onChange={(e) =>
-              updateField("severity", e.target.value)
-            }
+           onChange={(e) => {
+  updateField("country", e.target.value);
+}}
           >
             <option>Low</option>
             <option>Moderate</option>
