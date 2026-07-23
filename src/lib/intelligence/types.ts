@@ -54,6 +54,28 @@ export type Assessment = {
   evidence: EvidenceSource[];
 
   actions: ActionPackage[];
+
+  missionReadiness: {
+    overall: number;
+    coordination: number;
+    communication: number;
+    logistics: number;
+    water: number;
+    community: number;
+  };
+
+  decisionConfidence: {
+    weather: number;
+    livelihood: number;
+    fieldVerification: number;
+    dataQuality: number;
+  };
+
+  consequences: {
+    immediate: string[];
+    delayed: string[];
+    benefits: string[];
+  };
 };
 
 export type MissionBrief = {

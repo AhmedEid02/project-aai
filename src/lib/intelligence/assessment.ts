@@ -178,6 +178,64 @@ export function createAssessment(
     evidence: buildEvidence(),
 
     actions: buildActions(riskLevel),
+missionReadiness: {
 
+  overall: 84,
+
+  coordination: 90,
+
+  communication: 87,
+
+  logistics: 74,
+
+  water: 79,
+
+  community: 85,
+
+},
+
+decisionConfidence: {
+
+  weather: 95,
+
+  livelihood: 87,
+
+  fieldVerification: 61,
+
+  dataQuality: 92,
+
+},
+
+consequences: {
+
+  immediate: [
+
+    "Reduced water availability",
+
+    "Pasture deterioration",
+
+  ],
+
+  delayed: [
+
+    "Livestock losses",
+
+    "Food insecurity",
+
+    "Higher humanitarian response costs",
+
+  ],
+
+  benefits: [
+
+    "Earlier coordination",
+
+    "Reduced livelihood losses",
+
+    "Improved preparedness",
+
+  ],
+
+},
   };
 }

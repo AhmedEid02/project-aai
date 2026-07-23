@@ -92,3 +92,94 @@ Confidence: ${assessment.confidence}%`,
   };
 
 }
+export function buildOperationalProducts(
+  assessment: Assessment,
+): OperationalReport[] {
+
+  const situation = buildSituationReport(assessment);
+
+  const government: OperationalReport = {
+    ...situation,
+    type: "government-brief",
+    title: "Government Action Note",
+    audience: "Government Decision Makers",
+    sections: [
+      {
+        title: "Decision Required",
+        content: assessment.recommendedDecision,
+      },
+      {
+        title: "Priority Coordination",
+        content:
+          "Activate district coordination mechanisms and allocate resources according to the current operational risk.",
+      },
+      {
+        title: "Operational Risk",
+        content: `Risk Level: ${assessment.riskLevel} (${assessment.riskScore}/100)`,
+      },
+    ],
+  };
+
+  const humanitarian: OperationalReport = {
+    ...situation,
+    type: "humanitarian-note",
+    title: "Humanitarian Coordination Note",
+    audience: "Humanitarian Partners",
+    sections: [
+      {
+        title: "Priority Humanitarian Actions",
+        content: assessment.actions
+          .map(a => `• ${a.stakeholder}: ${a.action}`)
+          .join("\n"),
+      },
+      {
+        title: "Evidence Summary",
+        content: assessment.evidence
+          .map(e => `• ${e.source}`)
+          .join("\n"),
+      },
+    ],
+  };
+
+  const community: OperationalReport = {
+    ...situation,
+    type: "community-advisory",
+    title: "Community Advisory",
+    audience: "Communities",
+    sections: [
+      {
+        title: "What is happening?",
+        content: assessment.summary,
+      },
+      {
+        title: "What should you do?",
+        content:
+          "Monitor local conditions, conserve available water resources, protect livestock where applicable, and follow official advisories.",
+      },
+    ],
+  };
+
+  const somali: OperationalReport = {
+    ...situation,
+    type: "somali-advisory",
+    title: "Somali Last-Mile Advisory",
+    audience: "Communities",
+    sections: [
+      {
+        title: "Fariin Bulsho",
+        content:
+          "Khatartu hadda waa " +
+          assessment.riskLevel.toLowerCase() +
+          ". La soco digniinaha rasmiga ah, ilaali biyaha, kana diyaar garow tallaabooyinka hore.",
+      },
+    ],
+  };
+
+  return [
+    situation,
+    government,
+    humanitarian,
+    community,
+    somali,
+  ];
+}

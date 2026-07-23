@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  FileText,
+  CalendarDays,
+  ShieldCheck,
+  Users,
+  X,
+} from "lucide-react";
+
 import type { OperationalReport } from "@/lib/reports";
 
 type ReportPreviewProps = {
@@ -11,25 +19,38 @@ export default function ReportPreview({
   report,
   onClose,
 }: ReportPreviewProps) {
-
   if (!report) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-6 backdrop-blur-sm">
 
-      <div className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white shadow-2xl">
+      <div className="flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
 
-        <div className="border-b p-6">
+        {/* ================================================= */}
+        {/* Header */}
+        {/* ================================================= */}
 
-          <div className="flex items-center justify-between">
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 p-8 text-white">
 
-            <div>
+          <div className="flex items-start justify-between">
 
-              <h2 className="text-3xl font-bold">
+            <div className="space-y-2">
+
+              <div className="flex items-center gap-3">
+
+                <FileText className="h-8 w-8 text-cyan-300" />
+
+                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                  Adaptive Action Intelligence
+                </span>
+
+              </div>
+
+              <h1 className="text-3xl font-bold">
                 {report.title}
-              </h2>
+              </h1>
 
-              <p className="mt-2 text-slate-500">
+              <p className="text-slate-300">
                 {report.audience}
               </p>
 
@@ -37,63 +58,146 @@ export default function ReportPreview({
 
             <button
               onClick={onClose}
-              className="rounded-lg border px-4 py-2 hover:bg-slate-100"
+              className="rounded-xl bg-white/10 p-3 transition hover:bg-white/20"
             >
-              Close
+              <X className="h-5 w-5" />
             </button>
 
           </div>
 
         </div>
 
-        <div className="space-y-6 p-8">
+        {/* ================================================= */}
+        {/* Metadata */}
+        {/* ================================================= */}
 
-          <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 border-b bg-slate-50 p-6 md:grid-cols-3">
 
-            <div>
+          <div className="rounded-xl border bg-white p-4">
 
-              <div className="text-sm text-slate-500">
+            <div className="mb-2 flex items-center gap-2 text-slate-500">
+
+              <ShieldCheck className="h-4 w-4" />
+
+              <span className="text-xs uppercase font-semibold">
                 Mission ID
-              </div>
-
-              <div className="font-semibold">
-                {report.metadata.missionId}
-              </div>
+              </span>
 
             </div>
 
-            <div>
+            <div className="font-bold text-slate-900">
+              {report.metadata.missionId}
+            </div>
 
-              <div className="text-sm text-slate-500">
+          </div>
+
+          <div className="rounded-xl border bg-white p-4">
+
+            <div className="mb-2 flex items-center gap-2 text-slate-500">
+
+              <CalendarDays className="h-4 w-4" />
+
+              <span className="text-xs uppercase font-semibold">
                 Generated
-              </div>
+              </span>
 
-              <div className="font-semibold">
-                {report.metadata.generatedAt}
+            </div>
+
+            <div className="font-semibold">
+              {report.metadata.generatedAt}
+            </div>
+
+          </div>
+
+          <div className="rounded-xl border bg-white p-4">
+
+            <div className="mb-2 flex items-center gap-2 text-slate-500">
+
+              <Users className="h-4 w-4" />
+
+              <span className="text-xs uppercase font-semibold">
+                Intended Audience
+              </span>
+
+            </div>
+
+            <div className="font-semibold">
+              {report.audience}
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* ================================================= */}
+        {/* Report Body */}
+        {/* ================================================= */}
+
+        <div className="flex-1 overflow-y-auto bg-slate-100 p-8">
+
+          <div className="mx-auto max-w-4xl rounded-2xl bg-white p-10 shadow">
+
+            <div className="mb-8 border-b pb-6">
+
+              <h2 className="text-2xl font-bold text-slate-900">
+                Operational Intelligence Report
+              </h2>
+
+              <p className="mt-2 text-slate-600">
+                This report has been automatically generated by the
+                Adaptive Action Intelligence (AAI) platform to support
+                operational decision-making, coordination, and
+                anticipatory action.
+              </p>
+
+            </div>
+
+            <div className="space-y-8">
+
+              {report.sections.map((section) => (
+
+                <section
+                  key={section.title}
+                  className="rounded-xl border border-slate-200 bg-white p-6"
+                >
+
+                  <div className="mb-4 border-l-4 border-cyan-500 pl-4">
+
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {section.title}
+                    </h3>
+
+                  </div>
+
+                  <p className="whitespace-pre-line leading-8 text-slate-700">
+                    {section.content}
+                  </p>
+
+                </section>
+
+              ))}
+
+            </div>
+
+            {/* Footer */}
+
+            <div className="mt-10 border-t pt-6">
+
+              <div className="flex flex-col gap-2 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+
+                <span>
+                  Generated by Adaptive Action Intelligence (AAI)
+                </span>
+
+                <span>
+                  Operational Decision Support • Early Warning to Early Action
+                </span>
+
               </div>
 
             </div>
 
           </div>
-
-          {report.sections.map((section) => (
-
-            <section
-              key={section.title}
-              className="rounded-2xl border p-5"
-            >
-
-              <h3 className="mb-3 text-xl font-bold">
-                {section.title}
-              </h3>
-
-              <p className="whitespace-pre-line leading-7 text-slate-700">
-                {section.content}
-              </p>
-
-            </section>
-
-          ))}
 
         </div>
 
