@@ -24,7 +24,7 @@
 
 > 🌍 **Submitted to:** Youth4Climate Services Innovation Hackathon 2026, convened by the IGAD Climate Prediction and Applications Centre (ICPAC) in partnership with AGRA.
 
-> > 🔗 **Live prototype:** [project-aai.vercel.app](https://project-aai.vercel.app)
+> 🔗 **Live prototype:** [project-aai.vercel.app](https://project-aai.vercel.app)
 
 > 🎥 **Demonstration video:** [Watch the AAI operational demonstration](https://www.youtube.com/watch?v=mvT0jG_ps8k)
 
