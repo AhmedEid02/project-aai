@@ -686,22 +686,18 @@ Adaptive Action Intelligence is founded on a simple idea:
 
 **Climate information creates value only when it enables better decisions.**
 
-AAI is designed to bridge the gap between scientific knowledge and operational action by transforming climate information into explainable, transparent, and audience-specific intelligence.
+AAI is designed to bridge the gap between scientific knowledge and operational action by translating climate information into explainable, transparent, and audience-specific decision support.
 
-Rather than replacing existing climate services, AAI complements them by providing an operational layer that helps decision-makers understand evolving risks, prioritize actions, and coordinate responses across institutions and communities.
+Rather than replacing existing climate services or expert judgement, AAI complements them with an operational layer that helps decision-makers understand evolving risks, identify priority actions, coordinate institutional responsibilities, and communicate guidance through accessible and locally relevant channels.
 
-Our long-term vision is to support a future where climate early warning is consistently translated into timely, evidence-based, and coordinated early action—strengthening resilience, protecting livelihoods, and improving preparedness for climate-related hazards.
+Our long-term vision is a future in which climate early warning is consistently translated into timely, evidence-based, and coordinated early action across the IGAD region—strengthening preparedness, protecting climate-sensitive livelihoods, and enabling communities and institutions to act before hazards become crises.
 
 ---
-
-<div align="center">
 
 ### Adaptive Action Intelligence (AAI)
 
 **Turning Climate Early Warning into Coordinated Early Action**
 
-*Building operational intelligence for a more climate-resilient future.*
+*Building explainable operational intelligence for a more climate-resilient future.*
 
 © 2026 Adaptive Action Intelligence Project
-
-</div>
