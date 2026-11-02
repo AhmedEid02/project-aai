@@ -660,11 +660,13 @@ Rehana leads frontend implementation and user experience development, translatin
 
 # 🏆 Acknowledgements
 
-Adaptive Action Intelligence was developed as part of the **IGAD / ICPAC Early Warning–to–Early Action Hackathon**.
+Adaptive Action Intelligence (AAI) is a youth-led research and development prototype submitted to the **Youth4Climate Services Innovation Hackathon 2026**, convened by the IGAD Climate Prediction and Applications Centre (ICPAC) in partnership with AGRA.
 
-The project is inspired by the growing need to strengthen the connection between climate science, operational decision-making, and coordinated climate action.
+The project was developed in response to the continuing challenge of translating climate information into timely, explainable, and coordinated early action. Its design has been informed by established work across climate services, disaster-risk management, anticipatory action, humanitarian coordination, agricultural extension, and community-based risk communication.
 
-We acknowledge the important contributions of the climate services, disaster risk management, humanitarian, and research communities whose work continues to advance climate resilience across the Greater Horn of Africa and beyond.
+We acknowledge the climate-service institutions, researchers, humanitarian practitioners, government agencies, community organizations, and open-data providers whose work continues to strengthen climate resilience across the Greater Horn of Africa. We also recognize the contribution of open technologies and services, including Open-Meteo, OpenStreetMap, Next.js, React, Leaflet, and the wider open-source community.
+
+Submission to the hackathon does not imply endorsement, operational adoption, or validation of AAI by ICPAC, AGRA, IGAD, or any government institution.
 
 ---
 
