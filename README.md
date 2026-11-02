@@ -2,13 +2,9 @@
 
 ## Turning Climate Early Warning into Coordinated Early Action
 
-### An Open Operational Intelligence Platform for Climate Early Warning–to–Early Action Decision Support
+### An Open, Explainable Platform for Climate Early Warning–to–Early Action Decision Support
 
-<p align="center">
-
-> **Adaptive Action Intelligence (AAI)** transforms climate information into explainable operational intelligence that helps governments, humanitarian organizations, and communities make timely, evidence-based decisions.
-
-</p>
+> **Adaptive Action Intelligence (AAI)** is a functional web-based prototype that translates climate and livelihood-risk information into explainable assessments, coordinated early-action guidance, and audience-specific communication products for government institutions, humanitarian organizations, and community actors.
 
 <p align="center">
 
@@ -24,11 +20,21 @@
 
 > 📌 **Mission:** Transform climate information into actionable operational intelligence that enables faster, more transparent, and better-coordinated climate action.
 
-> 🌍 **Built for:** IGAD / ICPAC Early Warning–to–Early Action Hackathon
+> 🧪 **Current stage:** Functional, publicly deployed prototype ready for technical validation and user testing.
+
+> 🌍 **Submitted to:** Youth4Climate Services Innovation Hackathon 2026, convened by the IGAD Climate Prediction and Applications Centre (ICPAC) in partnership with AGRA.
+
+> 🔗 **Live prototype:** [project-aai.vercel.app](https://project-aai.vercel.app)
 
 ---
 
-> **<img width="1731" height="800" alt="01_Home_Mission_Control png" src="https://github.com/user-attachments/assets/f1d581fa-08db-4dae-b786-1786fd47629d" />**
+<p align="center">
+  <img width="1731" height="800" alt="AAI Mission Control showing the Gabiley meteorological-drought watch" src="https://github.com/user-attachments/assets/f1d581fa-08db-4dae-b786-1786fd47629d" />
+</p>
+
+<p align="center">
+  <em>AAI Mission Control: operational overview of the Gabiley meteorological-drought watch.</em>
+</p>
 
 ---
 
@@ -39,6 +45,8 @@ Climate information has advanced significantly through improved forecasting, sat
 Adaptive Action Intelligence (AAI) was developed to bridge this operational gap. Rather than functioning as another weather dashboard, AAI integrates climate evidence, adaptive risk assessment, mission management, and explainable decision support into a unified operational intelligence platform.
 
 AAI is designed to help decision-makers understand evolving climate risks, evaluate operational readiness, prioritize response options, and generate audience-specific intelligence products that support coordinated action across government institutions, humanitarian organizations, and vulnerable communities.
+
+**Current stage**: Functional, publicly deployed prototype ready for technical validation and user testing. The current version uses live Open-Meteo weather signals alongside representative climate, livelihood and operational indicators. Institutional integration and field validation are planned next steps.
 
 The platform is built around six operational questions that guide every assessment:
 
@@ -373,19 +381,19 @@ Adaptive Action Intelligence (AAI) is built using a modular web, geospatial, and
 
 ## Climate Integration Readiness
 
-The current prototype demonstrates the operational intelligence workflow using representative climate information, Open-Meteo weather signals, and modular data services.
+The current prototype combines live Open-Meteo weather signals with representative climate, livelihood, vulnerability, and operational-readiness indicators to demonstrate the complete early-warning-to-early-action workflow. These representative indicators support prototype testing and should not be interpreted as operational data feeds from ICPAC or National Meteorological and Hydrological Services.
 
-The architecture is designed to support future integration with operational climate and contextual information sources, including:
+The platform’s modular architecture is designed to support future integration with authoritative operational climate and contextual information sources, including:
 
 - National Meteorological and Hydrological Services
-- Regional Climate Centres
-- Satellite observations
+- Regional Climate Centres, including ICPAC
+- Satellite observations and earth-observation products
 - Historical climate databases
-- Vulnerability and exposure datasets
+- Validated vulnerability and exposure datasets
 - Community observations
-- Impact and field reports
+- Impact assessments and field reports
 
-Future releases can introduce additional real-time and geospatial data connectors without changing the core ARIE–AIDA operational workflow.
+Future releases can introduce quality-controlled real-time and geospatial data connectors without changing the core ARIE–AIDA operational workflow. This approach allows AAI to retain its explainable decision-support structure while progressively incorporating locally validated and institutionally recognized information sources.
 
 ## User Experience
 
@@ -487,9 +495,8 @@ Adaptive-Action-Intelligence/
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/adaptive-action-intelligence.git
-
-cd adaptive-action-intelligence
+git clone https://github.com/AhmedEid02/project-aai.git
+cd project-aai
 ```
 
 ---
