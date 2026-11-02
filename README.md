@@ -694,10 +694,14 @@ Our long-term vision is a future in which climate early warning is consistently 
 
 ---
 
-### Adaptive Action Intelligence (AAI)
+### <div align="center">
 
-**Turning Climate Early Warning into Coordinated Early Action**
+<h3>Adaptive Action Intelligence (AAI)</h3>
 
-*Building explainable operational intelligence for a more climate-resilient future.*
+<p><strong>Turning Climate Early Warning into Coordinated Early Action</strong></p>
 
-© 2026 Adaptive Action Intelligence Project
+<p><em>Building explainable operational intelligence for a more climate-resilient future.</em></p>
+
+<p>© 2026 Adaptive Action Intelligence Project</p>
+
+</div>
