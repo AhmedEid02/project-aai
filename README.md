@@ -24,7 +24,11 @@
 
 > 🌍 **Submitted to:** Youth4Climate Services Innovation Hackathon 2026, convened by the IGAD Climate Prediction and Applications Centre (ICPAC) in partnership with AGRA.
 
-> 🔗 **Live prototype:** [project-aai.vercel.app](https://project-aai.vercel.app)
+> > 🔗 **Live prototype:** [project-aai.vercel.app](https://project-aai.vercel.app)
+
+> 🎥 **Demonstration video:** [Watch the AAI operational demonstration](https://www.youtube.com/watch?v=mvT0jG_ps8k)
+
+> 💻 **Source code:** [github.com/AhmedEid02/project-aai](https://github.com/AhmedEid02/project-aai)
 
 ---
 
@@ -594,7 +598,7 @@ Potential areas for collaboration include:
 
 - Climate services integration
 - Geospatial analytics
-- Artificial intelligence for decision support
+- Explainable climate-risk and decision-support methods
 - Humanitarian information management
 - Early warning systems
 - Risk communication
