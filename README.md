@@ -570,15 +570,17 @@ These principles ensure that the platform remains adaptable while supporting tra
 ---
 # 🗺 Roadmap
 
-Adaptive Action Intelligence is being developed as a modular operational intelligence platform that can evolve from a hackathon prototype into a deployable decision-support system.
+Adaptive Action Intelligence is being developed through a phased pathway from a functional prototype to a validated and institutionally usable climate decision-support service.
 
-| Version | Milestone | Status |
-|----------|-----------|:------:|
-| **v1.0** | Interactive prototype with Mission Control, ARIE, AIDA, Climate Fusion, Operational Products, and Executive Intelligence Brief | ✅ Completed |
-| **v1.1** | Live climate service integration and configurable data connectors | 🔄 Planned |
-| **v1.2** | Multi-hazard operational assessments (drought, flood, heatwaves) | 🔄 Planned |
-| **v2.0** | Multi-country deployment and regional climate intelligence | 🎯 Vision |
-| **v3.0** | Operational decision-support platform for national institutions and humanitarian partners | 🚀 Long-Term Vision |
+| **Version** | **Milestone** | **Status** |
+|---|---|---|
+| **v1.0** | Functional web prototype with Mission Control, ARIE, AIDA, Climate Fusion, decision confidence, operational products, and a Gabiley meteorological-drought demonstration | ✅ Completed |
+| **v1.1** | Technical validation and user testing; configurable connections to authoritative climate and contextual data sources; refinement of risk logic, action thresholds, and communication products | 🔄 Planned |
+| **v1.2** | District-level drought-watch pilot; low-bandwidth and mobile improvements; expanded Somali-language and community communication features | 🔄 Planned |
+| **v2.0** | Multi-district and multi-hazard assessments covering drought, floods, and extreme heat, with locally configurable livelihood profiles and action protocols | 🎯 Development vision |
+| **v3.0** | Adaptation for multiple IGAD countries through partnerships with climate-service institutions, disaster-risk-management authorities, and humanitarian organizations | 🚀 Long-term vision |
+
+Progression between stages will depend on technical validation, user feedback, data availability, institutional collaboration, and evidence from practical testing.
 
 ---
 
